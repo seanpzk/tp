@@ -9,9 +9,9 @@
         "project-team": "Project team",
         "sean-phua": "Sean Phua",
         "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe",
-        "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "trinh-hoai-song-thu-sarah": "Trinh Hoai Song Thu (Sarah)",
+        "wang-helin": "Wang Helin",
+        "kota-sudarshan-karanth": "Kota Sudarshan Karanth"
       },
       "headingKeywords": {}
     },
@@ -111,7 +111,6 @@
         "table-of-contents": "Table of Contents",
         "quick-start": "Quick start",
         "features": "Features",
-        "viewing-help-help": "Viewing help : help",
         "adding-a-class-add": "Adding a class : add",
         "adding-a-list-of-students-add": "Adding a list of students : add",
         "removing-a-student-remove": "Removing a student : remove",
@@ -136,6 +135,30 @@
       "title": "John Doe's Project Portfolio Page",
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/revdrag.md",
+      "title": "Wang Helin's Project Portfolio Page",
+      "headings": {
+        "project-edutrack": "Project: EduTrack"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/songgthu.md",
+      "title": "Sarah's Project Portfolio Page",
+      "headings": {
+        "project-edutrack": "Project: EduTrack"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/sudarshan2401.md",
+      "title": "Sudarshan's Project Portfolio Page",
+      "headings": {
+        "project-edutrack": "Project: EduTrack"
       },
       "headingKeywords": {}
     },
