@@ -7,7 +7,7 @@
       "headings": {
         "about-us": "About Us",
         "project-team": "Project team",
-        "sean-phua": "Sean Phua",
+        "sean-phua-zeng-kiat": "Sean Phua Zeng Kiat",
         "donovan-chan-jia-jun": "Donovan Chan Jia Jun",
         "trinh-hoai-song-thu-sarah": "Trinh Hoai Song Thu (Sarah)",
         "wang-helin": "Wang Helin",
@@ -156,7 +156,7 @@
     },
     {
       "src": "team/seanpzk.md",
-      "title": "Sean Phua's Project Portfolio Page",
+      "title": "Sean Phua Zeng Kiat's Project Portfolio Page",
       "headings": {
         "project-edutrack": "Project: EduTrack"
       },
