@@ -26,10 +26,13 @@ public class Class {
      * @param students List of Student in the Class.
      */
     public Class(ClassName className, UniqueStudentList students) {
+        this(className, students, 0);
+    }
+    public Class(ClassName className, UniqueStudentList students, int totalLessons) {
         requireNonNull(className);
         this.className = className;
         this.students = students;
-        this.totalLessons = 0;
+        this.totalLessons = totalLessons;
     }
 
     public ClassName getClassName() {

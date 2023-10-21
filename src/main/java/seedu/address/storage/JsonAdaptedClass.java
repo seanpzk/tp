@@ -20,18 +20,22 @@ class JsonAdaptedClass {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Class's %s field is missing!";
 
     private final String className;
+    private int totalLessons;
     private final List<JsonAdaptedStudent> studentList = new ArrayList<>();
+
 
     /**
      * Constructs a {@code JsonAdaptedClass} with the given class details.
      */
     @JsonCreator
     public JsonAdaptedClass(@JsonProperty("className") String className,
+                            @JsonProperty("totalLessons") int totalLessons,
                             @JsonProperty("studentList") List<JsonAdaptedStudent> studentList) {
         this.className = className;
         if (studentList != null) {
             this.studentList.addAll(studentList);
         }
+        this.totalLessons = totalLessons;
     }
 
     /**
@@ -39,6 +43,7 @@ class JsonAdaptedClass {
      */
     public JsonAdaptedClass(Class source) {
         className = source.getClassName().className;
+        totalLessons = source.getTotalLessons();
         studentList.addAll(source.getStudentList().stream()
                 .map(JsonAdaptedStudent::new)
                 .collect(Collectors.toList()));
@@ -63,8 +68,7 @@ class JsonAdaptedClass {
             throw new IllegalValueException(ClassName.MESSAGE_CONSTRAINTS);
         }
         final ClassName modelClassName = new ClassName(className);
-
-        return new Class(modelClassName, students);
+        return new Class(modelClassName, students, totalLessons);
     }
 
 }
