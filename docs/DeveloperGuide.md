@@ -282,8 +282,11 @@ Step 4. `cmd` communicates with the `Model` when executed to remove the first `S
 Step 5. The result of the command execution is encapsulated as a `CommandResult` object which is returned back to `Logic`.
 
 The scenario is depicted by this sequence diagram. For execution of `cmd`, refer to this [sequence diagram](#execution-of-a-removestudentcommand).
+
 ##### Remove Student Mechanism
+
 <puml src="diagrams/RemoveStudentSequenceDiagramPart1.puml" alt="RemoveStudentSequenceDiagramPart1" />
+
 **Note:** The lifeline for `RemoveStudentCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 The mechanism to execute a `RemoveStudentCommand` is elaborated in the below walkthrough.
 This is a list of variables used in the walkthrough for clarity.
@@ -307,6 +310,7 @@ This is a list of variables used in the walkthrough for clarity.
 The relationship between variables can be summarised by this object [diagram](#relationship-between-key-variables).
 
 ##### Relationship between key variables
+
 <puml src="diagrams/RemoveStudentObjectDiagram.puml" alt="RemoveStudentObjectDiagram" />
 
 **Walkthrough**
@@ -332,11 +336,14 @@ Step 9. `cmd` returns `CommandResult` to `LogicManager`.
 The walkthrough can be summarised by this sequence diagram. (Some details are omitted in the diagram)
 
 ##### Execution of a `RemoveStudentCommand`
+
 <puml src="diagrams/RemoveStudentSequenceDiagramPart2.puml" alt="RemoveStudentSequenceDiagramPart2" />
+
 **Note:** The lifeline for `Student` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 The following activity diagram summarises what happens when a user removes a Student:
 
 ##### Remove Student Workflow
+
 <puml src="diagrams/RemoveStudentActivityDiagram.puml" alt="RemoveStudentActivityDiagram" />
 
 **Implementation reasoning:**
