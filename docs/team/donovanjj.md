@@ -48,7 +48,7 @@ Given below are my contributions to the project.
     * **remove class:** Added and maintained the `remove class` feature in the user guide (Pull request [#27](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/27), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
     * **mark student present:** Added and maintained the `mark` feature in the user guide (Pull request [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
     * **mark student absent:** Added and maintained the `unmark` feature in the user guide (Pull request [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
-    * **mark student absent:** Added and maintained the `markall` feature in the user guide (Pull request [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
+    * **mark all students present:** Added and maintained the `markall` feature in the user guide (Pull request [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
   * README:
     * Updated the README to remain consistent with our project (Pull request [#27](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/2), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
   * Developer Guide:
