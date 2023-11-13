@@ -37,7 +37,7 @@ If you are an **experienced user** of EduTrack, click [here](#command-summary) t
      - [Viewing a class : `view /c`](#viewing-a-class-view-c)
      - [Editing a class: `edit /c`](#editing-a-class-edit-c)
      - [Starting a lesson : `startlesson /c`](#starting-a-lesson-startlesson-c)
-     - [Setting the number of lessons of a class: `setlesson /c`](#setting-the-number-of-lessons-of-a-class-setlesson-c)
+     - [Setting the number of lessons of a class : `setlesson /c`](#setting-the-number-of-lessons-of-a-class-setlesson-c)
    - [Student commands](#student-commands)
      - [Adding a student : `add /s`](#adding-a-student-add-s)
      - [Removing a student : `remove /s`](#removing-a-student-remove-s)
