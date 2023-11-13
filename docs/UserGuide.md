@@ -590,7 +590,7 @@ John has been removed from CS2103T
 <box type="info">
 
 **Information:**
-- You can identify the `STUDENT_INDEX` of a student by using the [viewing a class](#viewing-a-class-view) command.
+- You can identify the `STUDENT_INDEX` of a student by using the [viewing a class](#viewing-a-class-view-c) command.
 
 </box>
 
