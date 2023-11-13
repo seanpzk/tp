@@ -55,6 +55,8 @@ Given below are my contributions to the project.
     * Added use cases for the following:
       * **Remove a class** (Pull request [#27](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/27))
       * **Adding and removing a lesson to a class schedule which will be removed** (Pull request [#27](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/27))
+      * **Mark a student present for a lesson** (Pull request [#154](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/154/files))
+      * **Mark all students present in a class** (Pull request [#154](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/154/files))
     * Added the following items for the `mark` student present command:
       * Implementation
       * Design consideration

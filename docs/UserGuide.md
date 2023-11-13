@@ -107,9 +107,9 @@ EduTrack's [GUI](#glossary) is designed with simplicity and efficiency in mind, 
 
 **Information:**
 
-* The `UI` will refresh upon any changes to the class list or student list.
+* The GUI will refresh upon any changes to the class list or student list.
 
-* If changes are made to a student or class information of another class while you are [viewing a class](#viewing-a-class-view-c), the `UI` will update to show you the other class' students and class information.
+* If changes are made to a student or class information of another class while you are [viewing a class](#viewing-a-class-view-c), the GUI will update to show you the other class' students and class information.
 
 </box>
 
@@ -311,7 +311,7 @@ Deleted Class: CS2103T-T15-3
 
 ### Viewing a class : `view /c`
 
-Shows you detailed information (class name, class schedule, enrolled student list) about a class on the User Interface. Using this command you will be able to have access to all the information you need to manage and edit your class and student information.
+Shows you detailed information (class name, class schedule, enrolled student list) about a class on the GUI. You will be able to have an overview of all the information you need to manage and edit your class and student information.
 
 **Command Format:** `view /c CLASS_INDEX`
 
@@ -554,7 +554,7 @@ Added New Student: John; Id: A0000000Z; Memo:  to the class: CS2103T
 
 **Caution:**
 * The class to add the student into must already exist.
-* After adding the student, the `UI` will update to show you the student list of the class which you added the new student into.
+* After adding the student, the GUI will update to show you the student list of the class which you added the new student into.
 
 </box>
 
@@ -649,7 +649,7 @@ edit /s 2 /c CS2103T /id A010193Z
 **Caution:**
 
 - Only valid ids will be recognised. It has to start with "A", followed by only numerical characters (0-9), and end with a single capitalized alphabet (A-Z).
-- After editing the student, the `UI` will update to show you the student list of the class that the edited student is in.
+- After editing the student, the GUI will update to show you the student list of the class that the edited student is in.
 - Be careful of any unintended edits that might lead to unwanted results (eg. 2 students with the same name) as they will not be counted as identical students as mentioned in the `Adding a student feature`.
 
 
@@ -894,7 +894,7 @@ Removes all your entries from EduTrack when you want to start fresh.
 
 **Information:**
 
-- EduTrack's UI should look like this when you have successfully executed the command:
+- EduTrack's GUI should look like this when you have successfully executed the command:
 
   ![clear command](images/clearCommand.png)
 
@@ -967,4 +967,5 @@ There is no need to save manually.
 | **Graphical User Interface (GUI)** | Graphical user interface where users interact with the system through visual representations. <br> <br> e.g. Google Chrome, Spotify, Windows Desktop |
 
 <br>
-:arrow_up: _Return to [Table of Contents](#table-of-contents)_ 
+
+:arrow_up: _Return to [Table of Contents](#table-of-contents)_
