@@ -53,7 +53,7 @@ public class JsonEduTrackStorage implements EduTrackStorage {
 
         try {
             return Optional.of(jsonEduTrack.get().toModelType());
-        } catch (IllegalValueException ive) {
+        } catch (IllegalValueException | NullPointerException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataLoadingException(ive);
         }
