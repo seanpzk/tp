@@ -912,7 +912,7 @@ Removes all your entries from EduTrack when you want to start fresh.
 
 ### Saving the data
 
-EduTrack got your back. Your data is automatically saved on your hard disk after any command that changes the data, so no need to worry about saving manually.
+EduTrack's got your back. Your data is automatically saved on your hard disk after any command that changes the data, so no need to worry about saving manually.
 
 <br>
 
