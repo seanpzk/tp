@@ -3,7 +3,7 @@
   title: "Wang Helin's Project Portfolio Page"
 ---
 
-## revdrag's Project Porfolio Page
+## revdrag's Project Portfolio Page
 
 ### Project: EduTrack
 
