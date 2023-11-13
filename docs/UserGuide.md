@@ -37,7 +37,7 @@ If you are an **experienced user** of EduTrack, click [here](#command-summary) t
      - [Viewing a class : `view /c`](#viewing-a-class-view-c)
      - [Editing a class: `edit /c`](#editing-a-class-edit-c)
      - [Starting a lesson : `startlesson /c`](#starting-a-lesson-startlesson-c)
-     - [Setting number of lessons of a class : `setlesson /c`](#setting-number-of-lessons-of-a-class-setlesson-c)
+     - [Setting the number of lessons of a class: `setlesson /c`](#setting-the-number-of-lessons-of-a-class-setlesson-c)
    - [Student commands](#student-commands)
      - [Adding a student : `add /s`](#adding-a-student-add-s)
      - [Removing a student : `remove /s`](#removing-a-student-remove-s)
@@ -45,6 +45,7 @@ If you are an **experienced user** of EduTrack, click [here](#command-summary) t
      - [Marking a student present : `mark /s`](#marking-a-student-present-mark-s)
      - [Marking a student absent : `unmark /s`](#marking-a-student-absent-unmark-s)
      - [Marking all students in a class present : `markall /c`](#marking-all-students-in-a-class-present-markall-c)
+     - [Marking all students in a class absent : `unmarkall /c`](#marking-all-students-in-a-class-absent-unmarkall-c)
    - [Miscellaneous commands](#miscellaneous-commands)
      - [Viewing help : `help`](#viewing-help-help)
      - [Exiting the program : `exit`](#exiting-the-program-exit)
@@ -59,11 +60,11 @@ If you are an **experienced user** of EduTrack, click [here](#command-summary) t
 
 ## Quick start
 
-1. Ensure you have `Java 11` or above installed in your computer.
+1. Ensure you have `Java 11` or above installed on your computer.
 2. Download the **latest** `EduTrack.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-3/tp/releases).
 3. Copy the file to the folder you want to use as the _home folder_ for your EduTrack.
 4. Open a command terminal, `cd` into the folder you placed your `EduTrack.jar` file in, and type `java -jar EduTrack.jar` to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data. Refer to [EduTrack's Graphical User Interface](#edutrack-s-graphical-user-interface) if you want to learn more about EduTrack's interface.
+   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. Refer to [EduTrack's Graphical User Interface](#edutrack-s-graphical-user-interface) if you want to learn more about EduTrack's interface.
 
 ![Ui](images/quickstart.png) 
 
@@ -171,7 +172,7 @@ These are the common terms you will encounter throughout this user guide.
 
 * Words in `UPPER_CASE` enclosed in square brackets are **optional parameters**. <br>
   
-  E.g., you can choose to provide either `CLASS_NAME`, `MEMO` and `SCHEDULE` in the `edit /c CLASS_INDEX [/n CLASS_NAME] [/m MEMO] [/t SCHEDULE]` command.
+  E.g., you can choose to provide either `CLASS_NAME`, `MEMO`, and `SCHEDULE` in the `edit /c CLASS_INDEX [/n CLASS_NAME] [/m MEMO] [/t SCHEDULE]` command.
 
 * **Optional parameters** can be in any order.<br>
   
@@ -183,7 +184,7 @@ ignored.<br>
   E.g., the command `help 123`, will be interpreted as `help`.
 
 * If you are using a **PDF version** of this document, be careful when copying and pasting commands that span multiple lines
-as space characters surrounding line-breaks may be omitted when copied over to the application.
+as space characters surrounding line breaks may be omitted when copied over to the application.
 
 #### Command parameters
 
@@ -191,7 +192,7 @@ Most commands in EduTrack require various parameters. You can find their constra
 
 | Parameters              | Constraints                                                                                                                                                                                                                                             |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `CLASS_NAME`            | A single-word string consists of any characters and not case-sensitive. <br> When `CLASS_NAME` is displayed on the screen, it will always be in uppercase.                                                                                              |
+| `CLASS_NAME`            | A single-word string consists of any characters and is not case-sensitive. <br> When `CLASS_NAME` is displayed on the screen, it will always be in uppercase.                                                                                           |
 | `CLASS_INDEX`           | A valid positive integer shown in displayed class list.                                                                                                                                                                                                 |
 | `STUDENT_NAME`          | A string consisting of alphanumeric characters.                                                                                                                                                                                                         |
 | `STUDENT_INDEX`         | A valid positive integer shown in displayed student list.                                                                                                                                                                                               |
@@ -208,7 +209,7 @@ Most commands in EduTrack require various parameters. You can find their constra
 
 ## Features
 
-The features are broken down into their following subsections:
+The features are broken down into the following subsections:
 
 1. [Class commands](#class-commands)
 2. [Student commands](#student-commands)
@@ -218,7 +219,7 @@ The features are broken down into their following subsections:
 
 **Tip:**
 
-* We highly recommend you to read the [Command format](#command-format) and [Command parameters](#command-parameters) sections to understand their constraints before using our features.
+* We highly recommend you read the [Command format](#command-format) and [Command parameters](#command-parameters) sections to understand their constraints before using our features.
 
 </box>
 
@@ -302,7 +303,7 @@ Deleted Class: CS2103T-T15-3
 
 ### Viewing a class : `view /c`
 
-Shows you the detailed information (class name, class schedule, enrolled student list) about a class onto the User Interface. Using this feature you will be able to have access to all the information you need to manage and edit your class and student information.
+Shows you detailed information (class name, class schedule, enrolled student list) about a class on the User Interface. Using this command you will be able to have access to all the information you need to manage and edit your class and student information.
 
 **Command Format:** `view /c CLASS_INDEX`
 
@@ -332,7 +333,7 @@ Listed all students in CS2103T-T15-3
 
 ### Editing a class : `edit /c`
 
-Edits your class information at the specified index. You can update the name of your class, memo and schedule. This helps to keep your class information up-to-date.
+Edits your class information at the specified index. You can update the name of your class, memo, and schedule. This helps to keep your class information up-to-date.
 
 **Command Format:** `edit /c CLASS_INDEX [/n CLASS_NAME] [/m MEMO] [/t SCHEDULE]`
 
@@ -374,7 +375,7 @@ edit /c 2 /n cs2040s
 
 **Information:**
 
-* User must specify **at least one** parameter of the following: `/n`, `/m`, `/t`.
+* You must specify **at least one** parameter of the following: `/n`, `/m`, `/t`.
 * For each parameter specified, existing values will be updated to the input values.
 
 </box>
@@ -405,7 +406,7 @@ Starts a lesson of your chosen class and enables you to start [attendance taking
 **Command Format:** `startlesson /c CLASS_NAME`
 
 **Example:**
-- `startlesson /c CS2103T`: Increases total number of lessons conducted for class "CS2103T" by 1 and marks all the students in "CS2103T" 
+- `startlesson /c CS2103T`: Increases the total number of lessons conducted for class "CS2103T" by 1 and marks all the students in "CS2103T" 
 as absent for attendance taking.
 
 **Sample Usage**:
@@ -440,7 +441,7 @@ startlesson /c CS2103T
 
 **Information:**
 - Class must already exist
-- The update of class records consists of increasing number of lessons conducted in your class by 1 and marking all your students as absent to facilitate attendance marking.
+- The update of class records consists of increasing the number of lessons conducted in your class by 1 and marking all your students as absent to facilitate attendance marking.
 
 </box>
 
@@ -455,7 +456,7 @@ startlesson /c CS2103T
 
 <br>
 
-### Setting number of lessons of a class : `setlesson /c`
+### Setting the number of lessons of a class : `setlesson /c`
 
 Sets the total number of lessons conducted for your chosen class manually.
 
@@ -537,7 +538,7 @@ Added New Student: John; Id: A0000000Z; Memo:  to the class: CS2103T
 * Every student must be assigned to a class, i.e. a student should always appear in one of the classes.
 * A default id "A0000000Z" will be assigned to the student.
 * An identical student (ie. all student information are the same) cannot be in more than one class at the same time.
-  * These include the student's name, id, memo, participation, current attendance and total attendance.
+  * These include the student's name, id, memo, participation, current attendance, and total attendance.
 
 </box>
 
@@ -639,7 +640,7 @@ edit /s 2 /c CS2103T /id A010193Z
 
 **Caution:**
 
-- Only valid ids will be recognised. It has to start with "A", followed by only numerical characters (0-9) and end with a single capitalised alphabet (A-Z).
+- Only valid ids will be recognised. It has to start with "A", followed by only numerical characters (0-9), and end with a single capitalized alphabet (A-Z).
 - After editing the student, the `UI` will update to show you the student list of the class that the edited student is in.
 - Be careful of any unintended edits that might lead to unwanted results (eg. 2 students with the same name) as they will not be counted as identical students as mentioned in the `Adding a student feature`.
 
@@ -650,7 +651,7 @@ edit /s 2 /c CS2103T /id A010193Z
 
 ### Marking a student present : `mark /s`
 
-Marks a student present for your current lesson.
+Marks a student present from your current lesson.
 
 **Command Format:** `mark /s STUDENT_INDEX /c CLASS_NAME`
 
@@ -672,7 +673,7 @@ mark /s 2 /c CS2103T
 Jamie successfully marked present!
 ```
 
-4. Below is a sample of the result outcome of the command:
+4. Below is a sample of the resulting outcome of the command:
 
 <br>
 
@@ -712,7 +713,7 @@ Jamie successfully marked present!
 
 ### Marking a student absent : `unmark /s`
 
-Marks a student absent for your current lesson.
+Marks a student absent from your current lesson.
 
 **Command Format:** `unmark /s STUDENT_INDEX /c CLASS_NAME`
 
@@ -765,7 +766,7 @@ Jamie has been marked absent!
 
 ### Marking all students in a class present : `markall /c`
 
-Marks all students in your class as present. You can use this command if all your students are present for your current lesson.
+Marks all the students in your class as present. You can use this command if all your students are present for your current lesson.
 
 **Command Format:** `markall /c CLASS_INDEX`
 
@@ -783,9 +784,9 @@ markall /c 1
 ```
 3. The result box will display the following message:
 ```
-All students in class CS2103T has been marked present!
+Successfully marked all students in CS2103T!
 ```
-4. Successfully marked all students in "CS2103T". :tada:
+4. You have successfully marked all the students in "CS2103T" as present. :tada:
 
 <box type="info">
 
@@ -800,6 +801,40 @@ All students in class CS2103T has been marked present!
 **Tip:**
 
 * You can use `markall` in conjunction with `unmark` if most of your students are present, you can save more time doing it this way.
+
+</box>
+
+<br>
+
+### Marking all students in a class absent : `unmarkall /c`
+
+Marks all students in your class as absent. You can use this command if all your students are absent for your current lesson.
+
+**Command Format:** `unmarkall /c CLASS_INDEX`
+
+**Examples:**
+* `unmarkall /c 1` : Marks all the students in your first class in the class list as absent.
+* `unmarkall /c 2` : Marks all the students in your second class in the class list as absent.
+
+**Sample Usage:**
+
+1. Assuming you want to mark all the students in your class named "CS2103T", whereby the class is positioned at index "1" in your class list, as absent.
+2. Enter the following commands:
+```
+view /c 1
+unmarkall /c 1
+```
+3. The result box will display the following message:
+```
+Successfully unmarked all students in CS2103T!
+```
+4. Successfully unmarked all students in "CS2103T"! :tada:
+
+<box type="info">
+
+**Information:**
+
+* Students who have already been marked absent will not be affected by this command.
 
 </box>
 
@@ -823,7 +858,7 @@ Displays a pop-up window containing the link to this user guide. You can use thi
 
   ![Help message box](images/helpMessage.png)
 
-- To read the user guide, you can click on the "Copy URL" button and paste the link in your web browser.
+- To read the user guide, you can click on the "Copy URL" button and paste the link into your web browser.
 
 </box>
 
@@ -876,7 +911,7 @@ EduTrack's got your back. Your data is automatically saved on your hard disk aft
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file EduTrack creates, with the file
+**A**: Install the app on the other computer and overwrite the empty data file EduTrack creates, with the file
 that contains the data of your previous EduTrack home folder.
 
 **Q**: How do I save my data?<br>
@@ -905,6 +940,7 @@ There is no need to save manually.
 | **mark**        | **Marking a student present:** <br> **Format:** `mark /s STUDENT_INDEX /c CLASS_NAME` <br> **E.g:** `mark /s 1 /c CS2103T`                                                                                                                                                                                                                               |
 | **unmark**      | **Marking a student absent:** <br> **Format:** `unmark /s STUDENT_INDEX /c CLASS_NAME` <br> **E.g:** `unmark /s 1 /c CS2103T`                                                                                                                                                                                                                            |
 | **markall**     | **Marking all students in a class present:** <br> **Format:** `markall /c CLASS_INDEX` <br> **E.g:** `markall /c 1`                                                                                                                                                                                                                                      |
+| **unmarkall**   | **Marking all students in a class absent:** <br> **Format:** `unmarkall /c CLASS_INDEX` <br> **E.g:** `unmrkall /c 1`                                                                                                                                                                                                                                    |
 | **startlesson** | **Starting a lesson of a class:** <br> **Format:** `startlesson /c CLASS_NAME` <br> **E.g:** `startlesson /c CS2103T`                                                                                                                                                                                                                                    |
 | **setlesson**   | **Setting the number of lessons in a class:** <br> **Format:** `setlesson /c CLASS_NAME /l NUMBER_OF_LESSONS` <br> **E.g:** `setlesson /c CS2103T /l 5`                                                                                                                                                                                                  |
 
@@ -917,3 +953,6 @@ There is no need to save manually.
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Command Line Interface (CLI)**   | Command line interface where users interact with the system by typing in commands. <br> <br> e.g. Terminal                                           |
 | **Graphical User Interface (GUI)** | Graphical user interface where users interact with the system through visual representations. <br> <br> e.g. Google Chrome, Spotify, Windows Desktop |
+
+<br>
+:arrow_up: _Return to [Table of Contents](#table-of-contents)_ 

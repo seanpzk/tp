@@ -40,14 +40,14 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 The **_Architecture Diagram_** given above explains the high-level design of the App.
 
-Given below is a quick overview of main components and how they interact with each other.
+Below is a quick overview of the main components and how they interact with each other.
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shutdown.
 
-- At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
-- At shut down, it shuts down the other components and invokes cleanup methods where necessary.
+- At app launch, it initializes the other components in the correct sequence and connects them up with each other.
+- At shutdown, it shuts down the other components and invokes cleanup methods where necessary.
 
 The bulk of the app's work is done by the following four components:
 
@@ -83,7 +83,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ClassListPanel`, `StudentListPanel` , `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts is defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -91,7 +91,7 @@ The `UI` component,
 - listens for changes to `Model` data so that the UI can be updated with the modified data.
 - keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 - has specific updates based on certain commands e.g. `ListCommand` will update the `listPanelPlaceholder` to replace the `StudentListPanel` with the `ClassListPanel` and vice versa.
-- depends on some classes in the `Model` component, as it displays `Student` and `Class` object residing in the `Model`.
+- depends on some classes in the `Model` component, as it displays `Student` and `Class` objects residing in the `Model`.
 
 ### Logic component
 
@@ -190,7 +190,7 @@ Step 11. `Model#markStudentPresent` calls the `Model#updateFIlteredStudentList` 
 
 <box type="info" seamless>
 
-**Note:** If the command fail its execution, both the StudentList in EduTrack as well as StudentList in the class remain unchanged. An error message will be printed to notify the user.
+**Note:** If the command fails its execution, both the StudentList in EduTrack as well as StudentList in the class remain unchanged. An error message will be printed to notify the user.
 
 </box>
 
@@ -204,14 +204,14 @@ The following activity diagram shows what happens when a use executes the MarkSt
 
 #### Design considerations:
 
-**Aspect: Method of calculating number of lessons attended
+**Aspect: Method of calculating the number of lessons attended
 
 - **Alternative 1 (current choice): Maintain an overall counter for the number of lessons the student attended.
   - Pros: Easy to implement.
   - Cons: Unable to store the individual state of each lesson. Determining which lesson user attended is not possible.
-- **Alternative 2: Maintain the state of each individual lesson with an array.
-  - Pros: Enable users to view or modify the state of each individual lesson. May lead to more consistency in data, since the number of lessons and length of array is related.
-  - Cons: Difficult to implement. More memory usage, predefined maximum lessons required for array creation, although using ArrayList would be possible as well.
+- **Alternative 2: Maintain the state of each lesson with an array.
+  - Pros: Enable users to view or modify the state of each lesson. This may lead to more consistency in data, since the number of lessons and length of the array are related.
+  - Cons: Difficult to implement. More memory usage, and predefined maximum lessons are required for array creation, although using ArrayList would be possible as well.
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -238,15 +238,15 @@ Given below is an example usage scenario and how the edit student operation beha
 
 Step 1. A valid command `edit /s 1 /c CS2103T /n John` is given as a user input. This invokes `LogicManager#execute()`, which calls `EduTrackParser#parseCommand()` to parse the above command into command word `edit /s` and command argument `/s 1 /c CS2103T /n John`.
 
-Step 2. `EditStudentCommandParser` is initialised based on the parse results and `EditStudentCommandParser#parse()` is called. `EditStudentCommandParser#parse()` will call `ArgumentTokenizer#tokenize()` to identify all the prefixes such as `Index` of the Student being edited as well as the `ClassName` the student is supposed to be in. (ie. `1` and `CS2103T` respectively). It will also obtain an `ArgumentMultimap` of prefixes to their respective arguments (ie. `/n` is mapped to `John`).
+Step 2. `EditStudentCommandParser` is initialized based on the parse results and `EditStudentCommandParser#parse()` is called. `EditStudentCommandParser#parse()` will call `ArgumentTokenizer#tokenize()` to identify all the prefixes such as `Index` of the Student being edited as well as the `ClassName` the student is supposed to be in. (ie. `1` and `CS2103T` respectively). It will also obtain an `ArgumentMultimap` of prefixes to their respective arguments (ie. `/n` is mapped to `John`).
 
-Step 3. `EditStudentCommandParser#parse()` then initialises and EditStudentDescriptor that stores the details to edit the student with. Thus, `EditStudentDescriptor#setName()` will be called to store `John` as the `Name` to be edited.
+Step 3. `EditStudentCommandParser#parse()` then initializes and EditStudentDescriptor that stores the details to edit the student with. Thus, `EditStudentDescriptor#setName()` will be called to store `John` as the `Name` to be edited.
 
-Step 4. `EditStudentCommandParser#parse()` then initialises an EditStudentCommand with the `Index`, `ClassName` and `EditStudentDescriptor` as an argument. `EditStudentCommand#execute()` is then called, which creates a new `Student` and copies over the details to be edited from the `EditStudentDescriptor` into both the `UniqueStudentList` of the `Class` and `EduTrack`.
+Step 4. `EditStudentCommandParser#parse()` then initializes an EditStudentCommand with the `Index`, `ClassName`, and `EditStudentDescriptor` as an argument. `EditStudentCommand#execute()` is then called, which creates a new `Student` and copies over the details to be edited from the `EditStudentDescriptor` into both the `UniqueStudentList` of the `Class` and `EduTrack`.
 
 Step 5. After checking that the new `Student` is not a duplicate using `Class#hasStudentInClass()` and `Student#isSameStudent()`, `Model#setStudent` and `Model#setStudentInClass` will be called to replace the specified `Student`. Finally, `Model#updateFilteredStudentList()` is called to reflect the changes made to the `Student`.
 
-Step 6. `CommandResult` is then initialised with the `String` containing `MESSAGE_EDIT_PERSON_SUCCESS` and `Student` which will then be returned.
+Step 6. `CommandResult` is then initialized with the `String` containing `MESSAGE_EDIT_PERSON_SUCCESS` and `Student` which will then be returned.
 
 The following sequence diagram shows how the edit student operation works:
 <puml src="diagrams/EditStudentSequenceDiagram.puml" alt="EditStudentSequenceDiagram" />
@@ -262,9 +262,9 @@ The following sequence diagram shows how the edit student operation works:
 ### Remove Student feature
 #### Implementation
 
-The removal of Student implements the following operation:
-- `EduTrack#removeStudent(Student s)`  — Removes the Student s from List of Students in EduTrack that tracks all students.
-- `Class#removeStudent(Student s)`  — Removes the Student s from List of Students in Class that tracks all students in Class.
+The removal of `Student` implements the following operation:
+- `EduTrack#removeStudent(Student s)`  — Removes `s` from the list of students in `EduTrack` that tracks all students.
+- `Class#removeStudent(Student s)`  — Removes `s` from the list of students in `Class` that tracks all students in `Class`.
 
 These operations are exposed in the `Model` interface as `Model#deleteStudent(Student s)` and `Model#deleteStudent(Student s, Class sClass)`.
 
@@ -272,10 +272,10 @@ Given below is an example usage scenario of the remove student mechanism at a hi
 
 Step 1. The user inputs `remove /s 1 /c CS2103T` command to remove the first `Student` in the class named "CS2103T".
 
-Step 2. `Logic`is called upon to execute the above command, it is passed to an `EduTrackParser` object which in turns 
+Step 2. `Logic`is called upon to execute the above command, it is passed to an `EduTrackParser` object which in turn 
 create a `RemoveStudentCommandParser` and uses it to parse the command.
 
-Step 3. This results in `RemoveStudentCommand`, referred as `cmd` in this scenario, which is executed by the `LogicManager`.
+Step 3. This results in `RemoveStudentCommand`, referred to as `cmd` in this scenario, which is executed by the `LogicManager`.
 
 Step 4. `cmd` communicates with the `Model` when executed to remove the first `Student` in `Class` CS2103T.
 
@@ -334,14 +334,14 @@ The walkthrough can be summarised by this sequence diagram. (Some details are om
 ##### Execution of a `RemoveStudentCommand`
 <puml src="diagrams/RemoveStudentSequenceDiagramPart2.puml" alt="RemoveStudentSequenceDiagramPart2" />
 **Note:** The lifeline for `Student` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-The following activity diagram summarises what happen when a user removes a Student:
+The following activity diagram summarises what happens when a user removes a Student:
 
 ##### Remove Student Workflow
 <puml src="diagrams/RemoveStudentActivityDiagram.puml" alt="RemoveStudentActivityDiagram" />
 
 **Implementation reasoning:**
 1. `RemoveStudentCommand` leverages multiple methods from other classes to enhance abstraction, ultimately promoting higher cohesion within the system.
-2. `RemoveStudentCommand` is responsible for deletion of `s` from `globalStudentList` under `EduTrack` to enable creation of `Student` with same `Name` in the future. This is necessary because `EduTrack` enforces the uniqueness of student names in the `globalStudentList`.
+2. `RemoveStudentCommand` is responsible for deletion of `s` from `globalStudentList` under `EduTrack` to enable the creation of `Student` with same `Name` in the future. This is necessary because `EduTrack` enforces the uniqueness of student names in the `globalStudentList`.
 
 ### View Class feature
 
@@ -418,9 +418,9 @@ Step 1. The user launches the application.
 
 Step 2. The user executes `add /c cs2103t` command to add a new class with the class name "CS2103T". The `add /c` command calls `Parser#AddClassCommandParser` to retrieve the provided class name argument.
 
-Step 3. A new `Class` is created with the specified class name, an empty student list, an empty class note and empty class schedule.
+Step 3. A new `Class` is created with the specified class name, an empty student list, an empty class note, and empty class schedule.
 
-Step 4. The created `Class` is added to `UniqueClassList` if it does not exists in UniqueClassList. Then the `Storage` is updated to save the current state of `EduTrack`.
+Step 4. The created `Class` is added to `UniqueClassList` if it does not exist in UniqueClassList. Then the `Storage` is updated to save the current state of `EduTrack`.
 
 <puml src="diagrams/AddAClassObjectDiagram.puml" alt="AddAClassObjectDiagram" />
 
@@ -441,8 +441,8 @@ The following sequence diagram shows how the add class operation works:
 
 1. `LogicManager#execute()` is called.
 2. `EduTrackParse#parseCommand()` is called.
-3. `AddClassCommandParser#parse()` is called, a new `Class c` is created. Returns `AddClassCommand addClassCommand`.
-4.  `addClassCommand` calls `Model#hasClass(c)`. If class does not exists, calls `Model#addClass(c)`.
+3. `AddClassCommandParser#parse()` is called, and a new `Class c` is created. Returns `AddClassCommand addClassCommand`.
+4.  `addClassCommand` calls `Model#hasClass(c)`. If the class does not exist, it calls `Model#addClass(c)`.
 5.  `addClassCommand` returns `CommandResult` to `LogicManager`.
 
 The following activity diagram summarizes what happens when a new Class is added:
@@ -487,14 +487,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 School of Computing (SoC) tutor who:
 
-- has a need to manage classes with a significant number of students
+- needs to manage classes with a significant number of students
 - needs to do tasks like taking attendance, and keeping track of class participation
-- prefer desktop apps over other types
+- prefers desktop apps over other types
 - can type fast
 - prefers typing to mouse interactions
 - is reasonably comfortable using CLI apps
 
-**Value proposition**: Each tutor has multiple groups of students where each group can be large, keeping track of students and records would become a hassle. Our product provides a centralised system that would help to organise all student records for easy and quick access.
+**Value proposition**: Each tutor has multiple groups of students and each group can be large, and keeping track of students and records would become a hassle. Our product provides a centralized system that would help to organize all student records for easy and quick access.
 
 ### User stories
 
@@ -611,7 +611,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  EduTrack shows a list of classes.
 3.  User requests to update either the class name, memo or schedule of a particular class.
 4.  EduTrack overwrites the updated attribute of that particular class.
-5.  EduTrack informs that user of the new class details.
+5.  EduTrack informs user of the new class details.
 
 **Extensions**
 
@@ -625,7 +625,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-- 3b. User request to edit class name but class name is not specified.
+- 3b. User requests to edit class name but class name is not specified.
 
   - 3b1. EduTrack informs the user to specify the class name.
 
@@ -663,7 +663,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-- 3b. THe given student index is empty.
+- 3b. The given student index is empty.
 
   - 3b1. EduTrack shows an error message.
 
@@ -716,6 +716,39 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 - 3b. The given class index is empty.
 
   - 3b1. EduTrack shows an error message.
+
+    Use case ends.
+
+---
+
+**Use case: Start a lesson**
+
+**MSS**
+
+1. User requests to view the list of classes. 
+2. EduTrack shows a list of classes.
+3. User chooses to start a lesson for one of the classes.
+4. EduTrack starts a lesson for the chosen class.
+
+   Use case ends.
+
+**Extensions**
+
+- 1a. EduTrack shows an empty list.
+
+    Use case ends.
+
+- 3a. EduTrack detects that the class name is not specified.
+
+  - 3a1. EduTrack informs user that the class name is not specified.
+  - 3a2. EduTrack terminates the request.
+
+    Use case ends.
+
+- 3b. EduTrack detects that the class name is invalid.
+
+  - 3b1. EduTrack informs user that the class name is invalid.
+  - 3b2. EduTrack terminates the request.
 
     Use case ends.
 
@@ -871,7 +904,7 @@ Given below are instructions to test the app manually.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder.
+   1. Download the jar file and copy it into an empty folder.
 
    2. Double-click the jar file.<br>
       Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
@@ -917,10 +950,10 @@ Removes a class from EduTrack.
 1. Prerequisites: List all classes using the `list` command. Multiple classes in the list.
 
 2. Test case: `remove /c 1`<br>
-   Expected: First class is removed from the list. Class name is shown in delete message.
+   Expected: The first class is removed from the list. Class name is shown in the response message.
 
 3. Test case: `remove /c 0`<br>
-   Expected: No classes are deleted. Error details shown.
+   Expected: No classes are deleted. Error details are shown.
 
 ### Viewing a class
 
@@ -932,7 +965,7 @@ Views the detailed information of a class.
    Expected: Displays the student list of the first class as well as the class details in the Class information box.
 
 3. Test case: `view /c he`<br>
-   Expected: No change in display. Error details shown.
+   Expected: No change in display. Error details are shown.
 
 ### Editing a class
 
@@ -950,25 +983,25 @@ Starts the lesson of a class.
 1. Prerequisites: List all classes using the `list` command. The first class called `CS2103T` have multiple students.
 
 2. Test case: `startlesson /c CS2103T`<br>
-   Expected: Starts a new lesson for the class `CS2103T`. Displays the student list of the class and class information. All students total attendance increase by 1 and are now all absent (ie. the `Present` column is all `N`).
+   Expected: Starts a new lesson for the class `CS2103T`. Displays the student list of the class and class information. All students' total attendance increases by 1 and are now all absent (ie. the `Present` column is all `N`).
 
 3. Some invalid test cases to try (Error details shown):<br>
    * Missing `/c` prefix: `startlesson`
    * Missing class name: `startlesson /c`
    * Non-existent class: `startlesson /c NOTACLASS`
 
-### Setting number of lessons of a class
+### Setting the number of lessons of a class
 
 Sets the total number of a class.
 
-1. Prerequisites: List all classes using the `list` command. The first class called `CS2103T` have multiple students. The current total lessons of the class is `5`.
+1. Prerequisites: List all classes using the `list` command. The first class called `CS2103T` has multiple students. The current total lessons of the class is `5`.
 
 2. Test case: `setlesson /c CS2103T /l 10`<br>
    Expected: Sets the total lesson to 10 for the class `CS2103T`. Displays the student list and class details of class `CS2103T` and the overall attendance will be out of `10`.
 
 3. Test case: `setlesson /c CS2103T /l 0`<br>
    Expected: Sets the total lesson to 0 for the class `CS2103T`. Displays the student list and class details of class `CS2103T` and the overall attendance will be out of `0`.<br>
-   Note: This command is meant for users to edit the total lessons if they have incorrectly `startlesson`. Thus, no checks are done to ensure `/l` is valid. Do not be alarmed by invalid attendance records if command is used incorrectly.
+   Note: This command is meant for users to edit the total lessons if they have incorrectly `startlesson`. Thus, no checks are done to ensure `/l` is valid. Do not be alarmed by invalid attendance records if the command is used incorrectly.
 
 ### Adding a student
 
@@ -977,13 +1010,13 @@ Adds a student to a class.
 1. Prerequisite: List all classes using the `list` command. There is a class called `T1` at index 1 with no students.
 
 2. Test case: `add /s John /c 1`<br>
-       Expected: New student called `John` is added to the first class (ie. `T1`). Displays the student list and class information of the class the student is added into (ie. `T1`).
+   Expected: A new student called `John` is added to the first class (ie. `T1`). Displays the student list and class information of the class the student is added into (ie. `T1`).
 
 3. Some invalid test cases to try (Error details shown):<br>
    * Missing student name: `add /s /c 1`
    * Class index missing, or it is lesser or equal to 0: `add /s John /c`, `add /s John /c -1`
-   * Class index larger than number of classes: `add /s John /c 100`
-   * Non-alphanumeric Characters used for student name: `Add /s R@chel /c 1`
+   * Class index larger than the number of classes: `add /s John /c 100`
+   * Non-alphanumeric characters used for student name: `Add /s R@chel /c 1`
 
 ### Removing a student
 
@@ -992,7 +1025,7 @@ Removes a student from a class.
 1. Prerequisite: View the first class called `CS2103T` with multiple students using the `view /c` command. Multiple students in the student list.
 
 2. Test case: `remove /s 2 /c CS2103T`<br>
-   Expected: Second student is deleted from the class `CS2103T`. Displays student list of the class the student is removed from.
+   Expected: The second student is removed from the class `CS2103T`. Displays student list of the class the student is removed from.
 
 3. Some invalid test cases to try (Error details shown):<br>
    * Invalid student index: `remove /s 100 /c CS2103T`
@@ -1004,14 +1037,14 @@ Edits a student record.
 1. Prerequisite: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student named `Bob` in index 1 of the student list.
 
 2. Test case: `edit /s 1 /c CS2103T /n John /id A0000000U /m Quiet`<br>
-   Expected: Student name is replaced with `John`, id is replaced with `A0000000U`, memo is replaced with `Quiet`. Details of the edited is shown.
+   Expected: Student's name is replaced with `John`, id is replaced with `A0000000U`, memo is replaced with `Quiet`. Details of the edited student is shown.
 
 3. Test case: `edit /s 1 /c CS2103T /p Answered some questions.`<br>
    Expected: Ui's class participation column is updated to `Answered some questions.` Details of edited student is shown.
 
 4. Some invalid test cases to try (Error details shown):<br>
    * No optional fields: `edit /s 1 /c CS2103T`
-   * Student index larger than number of students in the class: `edit /s 100 /c CS2103T /m Bob`
+   * Student index larger than the number of students in the class: `edit /s 100 /c CS2103T /m Bob`
 
 ### Marking a student present
 
@@ -1057,9 +1090,23 @@ Marks all student present for the current class.
    * Missing class index: `markall /c`
    * Class index larger than class list: `markall /c 100`
 
+### Marking all students in a class absent
+
+Marks all students absent for the current class.
+
+1. Prerequisites: List all classes using the `list` command. The first class has multiple students.
+
+2. Test case: `unmarkall /c 1`<br>
+   Expected: Marks all the students in the first class of EduTrack absent where display under `Present` changes to `N`. Displays the student list of the class that is marked absent.
+
+3. Some invalid test cases to try (Error details shown):<br>
+   * Missing `/c` prefix: `unmarkall 1`
+   * Missing class index: `unmarkall /c`
+   * Class index larger than class list: `unmarkall /c 100`
+
 ### Help
 
-Showing the help window that contains a link to the User Guide.<br>
+Shows the help window that contains a link to the User Guide.<br>
 Note: If you minimise the window, using the help command will not do anything. Do look for the minimised window in the taskbar of your computer!
 
 1. Test case: `help`<br>
@@ -1068,10 +1115,9 @@ Note: If you minimise the window, using the help command will not do anything. D
 2. Test case: `help 1`<br>
    Expected: Shows the help window successfully. Additional invalid parameters are ignored.
 
-
 ### Clear
 
-Clearing all stored data in EduTrack.
+Clears all stored data in EduTrack.
 
 1. Prerequisites: EduTrack is populated with data (classes, students, both, or none).
 
@@ -1100,9 +1146,9 @@ Dealing with missing/corrupted data files
 
 1. Enhancement to validation of identical students
     <br><br>
-    As of now, to validate that 2 students are identical, the method `isSameStudent` check if all `Student`'s fields: name, id, total attendance, current attendance, memo and class participation are equal.
+    As of now, to validate that 2 students are identical, the method `isSameStudent` checks if all `Student`'s fields: name, id, total attendance, current attendance, memo, and class participation are equal.
     <br><br>
-    Thus, this allows the user to create (through adding or editing) 2 students that have 1 differing field apart from the name and id field. For example, there can be two `Student` with name Bob, id A0123456Z but one with a memo of "Actively asks question during class" and another with an empty memo. This can be confusing for the user if done unintentionally as the GUI would show 2 students that seem to represent the same student.
+    Thus, this allows the user to create (through adding or editing) 2 students that have 1 differing field apart from the name and id field. For example, there can be two `Student` with name Bob, id A0123456Z but one with a memo of "Actively asks questions during class" and another with an empty memo. This can be confusing for the user if done unintentionally as the GUI would show 2 students that seem to represent the same student.
     <br><br>
     Enhancement to be made:
     The method `isSameStudent` will be adjusted so that 2 students are identical if and only if both their name and id are the same. This will ensure every student is unique (based on name and id) in EduTrack (i.e. even between different classes).
