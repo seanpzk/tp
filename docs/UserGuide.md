@@ -840,9 +840,9 @@ Successfully unmarked all students in CS2103T!
 ```
 4. Successfully unmarked all students in "CS2103T"! :tada:
 
-<box type="info">
-
 <br>
+
+<box type="info">
 
 **Information:**
 
