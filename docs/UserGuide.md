@@ -955,4 +955,5 @@ There is no need to save manually.
 | **Graphical User Interface (GUI)** | Graphical user interface where users interact with the system through visual representations. <br> <br> e.g. Google Chrome, Spotify, Windows Desktop |
 
 <br>
-:arrow_up: _Return to [Table of Contents](#table-of-contents)_ 
+
+:arrow_up: _Return to [Table of Contents](#table-of-contents)_

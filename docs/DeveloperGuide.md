@@ -160,21 +160,26 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 This section describes some noteworthy details on how certain features are implemented.
 
-### Mark student attendance
+### Mark student's attendance as present
 #### Implementation
+
+The following object diagram shows how different instances interact with each other.
 
 <puml src="diagrams/MarkStudentObjectDiagram.puml" alt="MarkStudentObjectDiagram" />
 
+#### Walkthrough:
 
-Step 1. The user launches the application
+Do use the [sequence diagram](#execution-flow-of-mark-student-as-present)
 
-Step 2. The user executes `view /c 1` command to view the students in the 1st class in EduTrack.
+Step 1. The user executes `mark /s 1 /c CS2103T` to mark the 1st student in the class CS2103T.
 
-Step 3. The user executes `mark /s 1 /c CS2103T` to mark the 1st student in the class CS2103T.
+Step 2. `MarkStudentPresentCommandParser` creates a new `MarkStudentPresentCommand` with the required fields.
 
-Step 4. `MarkStudentPresentCommandParser` creates a new `MarkStudentPresentCommand` with the required fields.
+Step 3. `LogicManager` calls `MarkStudentPresentCommand#excecute()`.
 
-Step 5. `LogicManager` calls `MarkStudentPresentCommand#excecute()`.
+Step 4. `MarkStudentPresentCommand` calls `Model#getClass` to obtain the Class instance, `sClass`
+
+Step 5. `MarkStudentPresentCommand` calls `Model#getStudentInClass` to obtain the Student instance `s`
 
 Step 6. `MarkStudentPresentCommand` calls `Student#duplicateStudent` to create a duplicate Student, `duplicateS`.
 
@@ -182,21 +187,25 @@ Step 7. `MarkStudentPresentCommand` calls `Model#markStudentPresent`.
 
 Step 8. `Model#markStudentPresent` calls `Student#markStudentPresent` to mark the `duplicateS` as present, this updates both `sLessonsAttended` and `sCurrentLessonAttendance`.
 
-Step 9. `Model#markStudentPresent` calls `EduTrack#setStudent` to set `s` as the newly updated `duplicateS` in `EduTrack`'s `globalStudentList`.
+Step 9. `Model#markStudentPresent` calls `EduTrack#setStudent` and `Model#setStudentInClass` to replace `s` as with `duplicateS` in `EduTrack`'s `globalStudentList` and the `sClass`.
 
-Step 10. `Model#markStudentPresent` calls the `Model#setStudentInClass` to set `s` attached to the Class as the updated `duplicateS`.
+Step 10. `Model#markStudentPresent` calls the `Model#updateFIlteredStudentList` to update the GUI of Students shown to user.
 
-Step 11. `Model#markStudentPresent` calls the `Model#updateFIlteredStudentList` to update the GUI of Students shown to user.
+Step 11. `CommandResult` is returned.
 
 <box type="info" seamless>
 
-**Note:** If the command fails its execution, both the StudentList in EduTrack as well as StudentList in the class remain unchanged. An error message will be printed to notify the user.
+**Note:** If the command fails its execution, both the StudentList in EduTrack and StudentList in the class remain unchanged. An error message will be printed to notify the user.
 
 </box>
+
+#### Execution flow of Mark student as present:
 
 The following sequence diagram shows how the MarkStudentPresent operation works:
 
 <puml src="diagrams/MarkStudentSequenceDiagram.puml" alt="MarkStudentSequenceDiagram"/>
+
+#### User-EduTrack interaction diagram:
 
 The following activity diagram shows what happens when a use executes the MarkStudentPresentCommand:
 
@@ -204,12 +213,12 @@ The following activity diagram shows what happens when a use executes the MarkSt
 
 #### Design considerations:
 
-**Aspect: Method of calculating the number of lessons attended
+**Aspect:** Method of calculating the number of lessons attended
 
-- **Alternative 1 (current choice): Maintain an overall counter for the number of lessons the student attended.
+- **Alternative 1 (current choice):** Maintain an overall counter for the number of lessons the student attended.
   - Pros: Easy to implement.
   - Cons: Unable to store the individual state of each lesson. Determining which lesson user attended is not possible.
-- **Alternative 2: Maintain the state of each lesson with an array.
+- **Alternative 2:** Maintain the state of each lesson with an array.
   - Pros: Enable users to view or modify the state of each lesson. This may lead to more consistency in data, since the number of lessons and length of the array are related.
   - Cons: Difficult to implement. More memory usage, and predefined maximum lessons are required for array creation, although using ArrayList would be possible as well.
 
@@ -635,7 +644,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ---
 
-**Use case: Marking a student present for a lesson**
+**Use case: Mark a student present for a lesson**
 
 **MSS**
 
@@ -677,15 +686,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-- 3e. Lesson details was of invalid format.
-
-  - 3e1. EduTrack informs the user he should enter a lesson of the correct format.
-
-    Use case ends.
-
 ---
 
-**Use case: Marking all students present in a class**
+**Use case: Mark all students present in a class**
 
 **MSS**
 
