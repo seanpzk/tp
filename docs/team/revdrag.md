@@ -9,7 +9,7 @@
 
 #### Overview
 
-EduTrack is a **powerful desktop app** designed for SOC tutors, allowing them to streamline their teaching tasks and effortlessly track their student records. The user interacts with it using a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created with JavaFX. It is written in Java, and has about 12 kLOC.
+EduTrack is a **powerful desktop app** designed for SOC tutors, allowing them to streamline their teaching tasks and effortlessly track their student records. The user interacts with it using a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created with JavaFX. It is written in Java, and has about 13 kLOC.
 
 #### Summary of Contributions
 Given below are my contributions to the project.
