@@ -34,7 +34,7 @@ Given below are my contributions to the project.
 
 * **Non-feature**: Added test cases for the mark all students absent in a class command and its parser in EduTrack
 
-* **Code contributed**: [ReposenseLink](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=donovanjj&breakdown=true)
+* **Code contributed**: [RepoSenseLink](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=donovanjj&breakdown=true)
 
 * **Project management**:
   * Managed releases of `v1.2`, `v1.3`, `v1.3.trial` and `v1.4` on Github
