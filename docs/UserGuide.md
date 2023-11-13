@@ -935,7 +935,7 @@ There is no need to save manually.
 ## Known issues
 
 1. When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. When attempting to view a long string of text, the text may be truncated with "..." at the end. The remedy is to resize the window to be larger if possible.
+2. When attempting to view a long string of text, the text may be truncated with "..." at the end. The remedy is to resize the window to a larger size, if possible.
 3. When the window size is too small, the alignment of the columns when viewing a class may be off. The remedy is to resize the window to be larger if possible.
 
 ---

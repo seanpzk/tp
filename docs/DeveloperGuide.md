@@ -222,9 +222,6 @@ The following activity diagram shows what happens when a use executes the MarkSt
   - Pros: Enable users to view or modify the state of each lesson. This may lead to more consistency in data, since the number of lessons and length of the array are related.
   - Cons: Difficult to implement. More memory usage, and predefined maximum lessons are required for array creation, although using ArrayList would be possible as well.
 
-This section describes some noteworthy details on how certain features are implemented.
-
-
 ### Edit Student feature
 #### Implementation
 The `edit /s` command is facilitated by creating an `EditStudentCommand` depending  on the given input.
@@ -529,7 +526,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `EduTrack` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `EduTrack` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: See the app populated with sample data**
 
@@ -590,26 +587,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-- 1a. Class name is not specified.
-
-  Use case ends.
-
 - 3a. The given class index is invalid.
 
-  - 3a1. EduTrack shows an error message.
+  - 3a1. EduTrack informs the user the index provided is invalid.
 
-  Use case ends.
+    Use case ends.
 
 - 3b. No class index specified.
 
-  - 3b1. EduTrack shows an error message.
+  - 3b1. EduTrack informs the user the index provided is invalid.
 
-  Use case ends.
+    Use case ends.
 
-- 4b. EduTrack detects that the class does not exist.
+- 4a. EduTrack detects that the class does not exist.
 
-  - 4b1. EduTrack informs user that the class does not exist.
-  - 4b2. EduTrack terminates the request.
+  - 4a1. EduTrack informs user that the class does not exist.
+  - 4a2. EduTrack terminates the request.
 
     Use case ends.
 
@@ -667,30 +660,36 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 2a. The list is empty.
 
-  Use case ends.
+    Use case ends.
 
 - 3a. The given student index is invalid.
 
-  - 3a1. EduTrack shows an error message.
+  - 3a1. EduTrack informs the user that the student index is invalid.
 
     Use case ends.
 
 - 3b. The given student index is empty.
 
-  - 3b1. EduTrack shows an error message.
+  - 3b1. EduTrack informs the user taht the student index is invalid.
 
     Use case ends.
 
 - 3c. The given class name is invalid.
 
-  - 3c1. EduTrack shows an error message.
+  - 3c1. EduTrack informs the user that the class does not exist.
 
     Use case ends.
 
 - 3d. No class name specified.
 
-  - 3d1. EduTrack shows an error message.
+  - 3d1. EduTrack informs the user that the class name is not specified.
 
+    Use case ends.
+
+- 4a. The student to be marked present has already been marked as present.
+
+  - 4a1. EduTrack shows an error message to inform the user the student has already been marked present.
+    
     Use case ends.
 
 ---
@@ -711,17 +710,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 2a. The list is empty.
 
-  Use case ends.
+    Use case ends.
 
 - 3a. The given class index is invalid.
 
-  - 3a1. EduTrack shows an error message.
+  - 3a1. EduTrack informs the user that the class index provided is invalid.
 
     Use case ends.
 
 - 3b. The given class index is empty.
 
-  - 3b1. EduTrack shows an error message.
+  - 3b1. EduTrack informs the user that the command format is wrong.
 
     Use case ends.
 
