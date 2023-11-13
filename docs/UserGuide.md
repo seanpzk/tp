@@ -155,6 +155,8 @@ The text displayed in a tip box indicates handy tips to enhance your user experi
 
 </box>
 
+<br>
+
 #### Common terms
 
 These are the common terms you will encounter throughout this user guide.
@@ -164,6 +166,8 @@ These are the common terms you will encounter throughout this user guide.
 | **Command**   | The instruction you enter into command box of the application. |
 | **Parameter** | The additional information you provide alongside the command.  |
 
+<br>
+
 #### Command format
 
 * Words in `UPPER_CASE` are **compulsory parameters** to be supplied.<br>
@@ -172,7 +176,7 @@ These are the common terms you will encounter throughout this user guide.
 
 * Words in `UPPER_CASE` enclosed in square brackets are **optional parameters**. <br>
   
-  E.g., you can choose to provide either `CLASS_NAME`, `MEMO`, and `SCHEDULE` in the `edit /c CLASS_INDEX [/n CLASS_NAME] [/m MEMO] [/t SCHEDULE]` command.
+  E.g., you can choose to provide `CLASS_NAME`, `MEMO`, and/or `SCHEDULE` in the `edit /c CLASS_INDEX [/n CLASS_NAME] [/m MEMO] [/t SCHEDULE]` command.
 
 * **Optional parameters** can be in any order.<br>
   
@@ -185,6 +189,8 @@ ignored.<br>
 
 * If you are using a **PDF version** of this document, be careful when copying and pasting commands that span multiple lines
 as space characters surrounding line breaks may be omitted when copied over to the application.
+
+<br>
 
 #### Command parameters
 
@@ -222,6 +228,8 @@ The features are broken down into the following subsections:
 * We highly recommend you read the [Command format](#command-format) and [Command parameters](#command-parameters) sections to understand their constraints before using our features.
 
 </box>
+
+<br>
 
 ## Class commands :school:
 
@@ -788,6 +796,8 @@ Successfully marked all students in CS2103T!
 ```
 4. You have successfully marked all the students in "CS2103T" as present. :tada:
 
+<br>
+
 <box type="info">
 
 **Information:**
@@ -831,6 +841,8 @@ Successfully unmarked all students in CS2103T!
 4. Successfully unmarked all students in "CS2103T"! :tada:
 
 <box type="info">
+
+<br>
 
 **Information:**
 
