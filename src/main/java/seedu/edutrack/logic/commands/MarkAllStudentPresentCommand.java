@@ -42,6 +42,18 @@ public class MarkAllStudentPresentCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         Class studentClass = model.retrieveClass(targetClassIndex);
+        markAllStudentsPresent(model, studentClass);
+        return new CommandResult(String.format(MESSAGE_MARK_STUDENT_ATTENDANCE_SUCCESS,
+                Messages.formatClass(studentClass)));
+    }
+
+    /**
+     * Marks all the students present in the specified class.
+     *
+     * @param model Model Manager of EduTrack
+     * @param studentClass Class which the students to mark present are in
+     */
+    private static void markAllStudentsPresent(Model model, Class studentClass) {
         List<Student> studentList = studentClass.getStudentList();
         for (Student studentToMark : studentList) {
             Student editedStudent = studentToMark.duplicateStudent();
@@ -55,9 +67,8 @@ public class MarkAllStudentPresentCommand extends Command {
         }
         model.updateFilteredClassList((c) -> c.isSameClass(studentClass));
         model.updateFilteredStudentList((s) -> studentClass.getStudentList().contains(s));
-        return new CommandResult(String.format(MESSAGE_MARK_STUDENT_ATTENDANCE_SUCCESS,
-                Messages.formatClass(studentClass)));
     }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

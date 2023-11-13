@@ -18,8 +18,8 @@ Given below are my contributions to the project.
 * **New Feature**: Added the ability to add students to classes.
   * What it does: Allows the user to add students into the classes they created prior.
   * Justification: This feature improves the product significantly because it allows users to track student's records such as their name, student number and memo.
-  * Highlights: There were different design considerations when implementing this enhancement. To restrict users from creating invalid student numbers, it uses regex validation but that would mean it required to be a non-null value.
-    Instead of requiring a valid student number at the point of student creation, or for other reasons such as the user not having the information at hand or deem not necessary to keep track, the feature will instead populate it with a default value of `A0000000Z` for the user to edit in the future.
+  * Highlights: There were different design considerations when implementing this enhancement. To restrict users from creating invalid student numbers, it uses regex validation but that would require it to be a non-null value.
+    Instead of requiring a valid student number at the point of student creation, because there can be reasons such as the user not having the information at hand or deem not necessary to keep track, the feature will instead populate it with a default value of `A0000000Z` for the user to edit in the future.
 * **New Feature**: Added the ability to edit student records.
   * What it does: Allows the user to make changes to student records such as name, student number and memo.
   * Justification: This feature improves the product significantly as the user is able to keep track of their student records and write personalised memos for them.
@@ -29,7 +29,7 @@ Given below are my contributions to the project.
   * Highlights: This feature improves the product as users are now able to tinker around with EduTrack before they start using the application. This will allow them to familiarise themselves with how the GUI looks like in a typical EduTrack application. They will also be able to experiment with all the commands available and perform some manual testing with the help of the sample data.
 * **Project Management**:
   * Setup GitHub Team Organisation and Repository
-  * Setup Project Website: Migrate to MarkDown and set up GitHub Pages, helped partially to change names and links from AddressBook to EduTrack on the website such as `index.md`. (Pull Requests [#1](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/1), [#30](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/30))
+  * Setup Project Website: Migrate to MarkBind and set up GitHub Pages, helped partially to change names and links from AddressBook to EduTrack on the website such as `index.md`. (Pull Requests [#1](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/1), [#30](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/30))
   * Add `Appendix - Planned Enhancements` into website layout for easier navigation (Pull Request [#153](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/153))
 * **Enhancements to existing features**:
   * Added the ability to store `Memo` information (was initially `Note` but changed to de-conflict `Prefix` used) in `Student` and `Class` objects. (Pull Request [#58](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/58))

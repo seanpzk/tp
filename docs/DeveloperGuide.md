@@ -160,21 +160,26 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 This section describes some noteworthy details on how certain features are implemented.
 
-### Mark student attendance
+### Mark student's attendance as present
 #### Implementation
+
+The following object diagram shows how different instances interact with each other.
 
 <puml src="diagrams/MarkStudentObjectDiagram.puml" alt="MarkStudentObjectDiagram" />
 
+#### Walkthrough:
 
-Step 1. The user launches the application
+Do use the [sequence diagram](#execution-flow-of-mark-student-as-present)
 
-Step 2. The user executes `view /c 1` command to view the students in the 1st class in EduTrack.
+Step 1. The user executes `mark /s 1 /c CS2103T` to mark the 1st student in the class CS2103T.
 
-Step 3. The user executes `mark /s 1 /c CS2103T` to mark the 1st student in the class CS2103T.
+Step 2. `MarkStudentPresentCommandParser` creates a new `MarkStudentPresentCommand` with the required fields.
 
-Step 4. `MarkStudentPresentCommandParser` creates a new `MarkStudentPresentCommand` with the required fields.
+Step 3. `LogicManager` calls `MarkStudentPresentCommand#excecute()`.
 
-Step 5. `LogicManager` calls `MarkStudentPresentCommand#excecute()`.
+Step 4. `MarkStudentPresentCommand` calls `Model#getClass` to obtain the Class instance, `sClass`
+
+Step 5. `MarkStudentPresentCommand` calls `Model#getStudentInClass` to obtain the Student instance `s`
 
 Step 6. `MarkStudentPresentCommand` calls `Student#duplicateStudent` to create a duplicate Student, `duplicateS`.
 
@@ -182,21 +187,25 @@ Step 7. `MarkStudentPresentCommand` calls `Model#markStudentPresent`.
 
 Step 8. `Model#markStudentPresent` calls `Student#markStudentPresent` to mark the `duplicateS` as present, this updates both `sLessonsAttended` and `sCurrentLessonAttendance`.
 
-Step 9. `Model#markStudentPresent` calls `EduTrack#setStudent` to set `s` as the newly updated `duplicateS` in `EduTrack`'s `globalStudentList`.
+Step 9. `Model#markStudentPresent` calls `EduTrack#setStudent` and `Model#setStudentInClass` to replace `s` as with `duplicateS` in `EduTrack`'s `globalStudentList` and the `sClass`.
 
-Step 10. `Model#markStudentPresent` calls the `Model#setStudentInClass` to set `s` attached to the Class as the updated `duplicateS`.
+Step 10. `Model#markStudentPresent` calls the `Model#updateFIlteredStudentList` to update the GUI of Students shown to user.
 
-Step 11. `Model#markStudentPresent` calls the `Model#updateFIlteredStudentList` to update the GUI of Students shown to user.
+Step 11. `CommandResult` is returned.
 
 <box type="info" seamless>
 
-**Note:** If the command fails its execution, both the StudentList in EduTrack as well as StudentList in the class remain unchanged. An error message will be printed to notify the user.
+**Note:** If the command fails its execution, both the StudentList in EduTrack and StudentList in the class remain unchanged. An error message will be printed to notify the user.
 
 </box>
+
+#### Execution flow of Mark student as present:
 
 The following sequence diagram shows how the MarkStudentPresent operation works:
 
 <puml src="diagrams/MarkStudentSequenceDiagram.puml" alt="MarkStudentSequenceDiagram"/>
+
+#### User-EduTrack interaction diagram:
 
 The following activity diagram shows what happens when a use executes the MarkStudentPresentCommand:
 
@@ -204,12 +213,12 @@ The following activity diagram shows what happens when a use executes the MarkSt
 
 #### Design considerations:
 
-**Aspect: Method of calculating the number of lessons attended
+**Aspect:** Method of calculating the number of lessons attended
 
-- **Alternative 1 (current choice): Maintain an overall counter for the number of lessons the student attended.
+- **Alternative 1 (current choice):** Maintain an overall counter for the number of lessons the student attended.
   - Pros: Easy to implement.
   - Cons: Unable to store the individual state of each lesson. Determining which lesson user attended is not possible.
-- **Alternative 2: Maintain the state of each lesson with an array.
+- **Alternative 2:** Maintain the state of each lesson with an array.
   - Pros: Enable users to view or modify the state of each lesson. This may lead to more consistency in data, since the number of lessons and length of the array are related.
   - Cons: Difficult to implement. More memory usage, and predefined maximum lessons are required for array creation, although using ArrayList would be possible as well.
 
@@ -282,8 +291,11 @@ Step 4. `cmd` communicates with the `Model` when executed to remove the first `S
 Step 5. The result of the command execution is encapsulated as a `CommandResult` object which is returned back to `Logic`.
 
 The scenario is depicted by this sequence diagram. For execution of `cmd`, refer to this [sequence diagram](#execution-of-a-removestudentcommand).
+
 ##### Remove Student Mechanism
+
 <puml src="diagrams/RemoveStudentSequenceDiagramPart1.puml" alt="RemoveStudentSequenceDiagramPart1" />
+
 **Note:** The lifeline for `RemoveStudentCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 The mechanism to execute a `RemoveStudentCommand` is elaborated in the below walkthrough.
 This is a list of variables used in the walkthrough for clarity.
@@ -307,6 +319,7 @@ This is a list of variables used in the walkthrough for clarity.
 The relationship between variables can be summarised by this object [diagram](#relationship-between-key-variables).
 
 ##### Relationship between key variables
+
 <puml src="diagrams/RemoveStudentObjectDiagram.puml" alt="RemoveStudentObjectDiagram" />
 
 **Walkthrough**
@@ -332,11 +345,14 @@ Step 9. `cmd` returns `CommandResult` to `LogicManager`.
 The walkthrough can be summarised by this sequence diagram. (Some details are omitted in the diagram)
 
 ##### Execution of a `RemoveStudentCommand`
+
 <puml src="diagrams/RemoveStudentSequenceDiagramPart2.puml" alt="RemoveStudentSequenceDiagramPart2" />
+
 **Note:** The lifeline for `Student` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 The following activity diagram summarises what happens when a user removes a Student:
 
 ##### Remove Student Workflow
+
 <puml src="diagrams/RemoveStudentActivityDiagram.puml" alt="RemoveStudentActivityDiagram" />
 
 **Implementation reasoning:**
@@ -462,10 +478,6 @@ The following activity diagram summarizes what happens when a new Class is added
 
   - Pros: All information are specified by the time the class is created.
   - Cons: Requires the user to provide additional details like class notes or class schedule
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
 
 ---
 
@@ -639,7 +651,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ---
 
-**Use case: Marking a student present for a lesson**
+**Use case: Mark a student present for a lesson**
 
 **MSS**
 
@@ -681,15 +693,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-- 3e. Lesson details was of invalid format.
-
-  - 3e1. EduTrack informs the user he should enter a lesson of the correct format.
-
-    Use case ends.
-
 ---
 
-**Use case: Marking all students present in a class**
+**Use case: Mark all students present in a class**
 
 **MSS**
 
@@ -881,8 +887,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - The system should respond to user requests within a reasonable time frame (i.e. under 2 seconds).
 
-_{More to be added}_
-
 ### Glossary
 
 - **Mainstream OS**: Windows, Linux, Unix, macOS
@@ -918,10 +922,17 @@ Given below are instructions to test the app manually.
 
 ### List all classes
 
+<<<<<<< HEAD
 List all the classes that has been added into EduTrack.
 
 1. Test case: `list`<br>
    Expected: All the classes that have been added into EduTrack are shown. If the user is previously viewing a class, switches from class's student list to class list display.
+=======
+List all the classes that have been added into EduTrack.
+
+1. Test case: `list`<br>
+   Expected: All the classes that have been added into EduTrack are shown. If the user is previously viewing a class, switches from class' student list to class list display.
+>>>>>>> aae27bba84454d28b3cfbda34a8325aa5b1df65b
 
 2. Test case: `list 1`<br>
    Expected: Similar to the previous. Additional invalid parameters are ignored.
@@ -940,8 +951,8 @@ Adding a class to EduTrack.
    Expected: New class is added.
 
 3. Test case: `add /c cs2101`<br>
-   Expected: No class is added. Error details shown.<br>
-   Note: This have to be performed after test case 2.
+   Expected: No class is added. Error details are shown.<br>
+   Note: This has to be performed after test case 2.
 
 ### Removing a class
 
@@ -1012,11 +1023,11 @@ Adds a student to a class.
 2. Test case: `add /s John /c 1`<br>
    Expected: A new student called `John` is added to the first class (ie. `T1`). Displays the student list and class information of the class the student is added into (ie. `T1`).
 
-3. Some invalid test cases to try (Error details shown):<br>
-   * Missing student name: `add /s /c 1`
-   * Class index missing, or it is lesser or equal to 0: `add /s John /c`, `add /s John /c -1`
-   * Class index larger than the number of classes: `add /s John /c 100`
-   * Non-alphanumeric characters used for student name: `Add /s R@chel /c 1`
+3. Some invalid test cases to try (Error details shown): <br>
+  * Missing student name: `add /s /c 1`
+  * Class index missing, or it is lesser or equal to 0: `add /s John /c`, `add /s John /c -1`
+  * Class index larger than the number of classes: `add /s John /c 100`
+  * Invalid student name used: `add /s R@chel /c 1`
 
 ### Removing a student
 
@@ -1078,9 +1089,9 @@ Marks a student present for the current class.
 
 ### Marking all students in a class present
 
-Marks all student present for the current class.
+Marks all students present for the current class.
 
-1. Prerequisites: List all classes using the `list` command. The first class have multiple students.
+1. Prerequisites: List all classes using the `list` command. The first class has multiple students.
 
 2. Test case: `markall /c 1`<br>
    Expected: Marks all the students in the first class of EduTrack present where display under `Present` changes to `Y`. Displays the student list of the class that is marked present.
@@ -1100,14 +1111,14 @@ Marks all students absent for the current class.
    Expected: Marks all the students in the first class of EduTrack absent where display under `Present` changes to `N`. Displays the student list of the class that is marked absent.
 
 3. Some invalid test cases to try (Error details shown):<br>
-   * Missing `/c` prefix: `unmarkall 1`
-   * Missing class index: `unmarkall /c`
-   * Class index larger than class list: `unmarkall /c 100`
+* Missing `/c` prefix: `unmarkall 1`
+* Missing class index: `unmarkall /c`
+* Class index larger than class list: `unmarkall /c 100`
 
 ### Help
 
 Shows the help window that contains a link to the User Guide.<br>
-Note: If you minimise the window, using the help command will not do anything. Do look for the minimised window in the taskbar of your computer!
+Note: If you minimize the window, using the help command will not do anything. Do look for the minimized window in the taskbar of your computer!
 
 1. Test case: `help`<br>
    Expected: Shows the help window successfully.
@@ -1122,7 +1133,7 @@ Clears all stored data in EduTrack.
 1. Prerequisites: EduTrack is populated with data (classes, students, both, or none).
 
 2. Test case: `clear`<br>
-   Expected: Clears all stored data in EduTrack. Clear will be successful even if EduTrack have no data.
+   Expected: Clears all stored data in EduTrack. Clear will be successful even if EduTrack has no data.
 
 3. Test case: `clear 1`<br>
    Expected: Clears all stored data in EduTrack. Additional invalid parameters are ignored.
@@ -1132,7 +1143,7 @@ Clears all stored data in EduTrack.
 Dealing with missing/corrupted data files
 
 1. Make sure that there is a `./data/edutrack.json` file. <br>
-   If not, open the application (the jar file) and make some changes (e.g. `add /c T1`) and close the app (by typing in the `exit` command or clicking on the close button).
+   If not, open the application (the jar file), make some changes (e.g. `add /c T1`) and close the app (by typing in the `exit` command or clicking on the close button).
 
 2. Open `./data/edutrack.json` in a text editor or an integrated development environment (IDE).
 

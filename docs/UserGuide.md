@@ -37,7 +37,7 @@ If you are an **experienced user** of EduTrack, click [here](#command-summary) t
      - [Viewing a class : `view /c`](#viewing-a-class-view-c)
      - [Editing a class: `edit /c`](#editing-a-class-edit-c)
      - [Starting a lesson : `startlesson /c`](#starting-a-lesson-startlesson-c)
-     - [Setting the number of lessons of a class: `setlesson /c`](#setting-the-number-of-lessons-of-a-class-setlesson-c)
+     - [Setting the number of lessons of a class : `setlesson /c`](#setting-the-number-of-lessons-of-a-class-setlesson-c)
    - [Student commands](#student-commands)
      - [Adding a student : `add /s`](#adding-a-student-add-s)
      - [Removing a student : `remove /s`](#removing-a-student-remove-s)
@@ -107,9 +107,9 @@ EduTrack's [GUI](#glossary) is designed with simplicity and efficiency in mind, 
 
 **Information:**
 
-* The `UI` will refresh upon any changes to the class list or student list.
+* The GUI will refresh upon any changes to the class list or student list.
 
-* If changes are made to a student or class information of another class while you are [viewing a class](#viewing-a-class-view-c), the `UI` will update to show you the other class' students and class information.~
+* If changes are made to a student or class information of another class while you are [viewing a class](#viewing-a-class-view-c), the GUI will update to show you the other class' students and class information.
 
 </box>
 
@@ -155,6 +155,8 @@ The text displayed in a tip box indicates handy tips to enhance your user experi
 
 </box>
 
+<br>
+
 #### Common terms
 
 These are the common terms you will encounter throughout this user guide.
@@ -164,6 +166,8 @@ These are the common terms you will encounter throughout this user guide.
 | **Command**   | The instruction you enter into command box of the application. |
 | **Parameter** | The additional information you provide alongside the command.  |
 
+<br>
+
 #### Command format
 
 * Words in `UPPER_CASE` are **compulsory parameters** to be supplied.<br>
@@ -172,7 +176,7 @@ These are the common terms you will encounter throughout this user guide.
 
 * Words in `UPPER_CASE` enclosed in square brackets are **optional parameters**. <br>
   
-  E.g., you can choose to provide either `CLASS_NAME`, `MEMO`, and `SCHEDULE` in the `edit /c CLASS_INDEX [/n CLASS_NAME] [/m MEMO] [/t SCHEDULE]` command.
+  E.g., you can choose to provide `CLASS_NAME`, `MEMO`, and/or `SCHEDULE` in the `edit /c CLASS_INDEX [/n CLASS_NAME] [/m MEMO] [/t SCHEDULE]` command.
 
 * **Optional parameters** can be in any order.<br>
   
@@ -185,6 +189,8 @@ ignored.<br>
 
 * If you are using a **PDF version** of this document, be careful when copying and pasting commands that span multiple lines
 as space characters surrounding line breaks may be omitted when copied over to the application.
+
+<br>
 
 #### Command parameters
 
@@ -222,6 +228,8 @@ The features are broken down into the following subsections:
 * We highly recommend you read the [Command format](#command-format) and [Command parameters](#command-parameters) sections to understand their constraints before using our features.
 
 </box>
+
+<br>
 
 ## Class commands :school:
 
@@ -303,7 +311,7 @@ Deleted Class: CS2103T-T15-3
 
 ### Viewing a class : `view /c`
 
-Shows you detailed information (class name, class schedule, enrolled student list) about a class on the User Interface. Using this command you will be able to have access to all the information you need to manage and edit your class and student information.
+Shows you detailed information (class name, class schedule, enrolled student list) about a class on the GUI. You will be able to have an overview of all the information you need to manage and edit your class and student information.
 
 **Command Format:** `view /c CLASS_INDEX`
 
@@ -546,7 +554,7 @@ Added New Student: John; Id: A0000000Z; Memo:  to the class: CS2103T
 
 **Caution:**
 * The class to add the student into must already exist.
-* After adding the student, the `UI` will update to show you the student list of the class which you added the new student into.
+* After adding the student, the GUI will update to show you the student list of the class which you added the new student into.
 
 </box>
 
@@ -590,7 +598,7 @@ John has been removed from CS2103T
 <box type="info">
 
 **Information:**
-- You can identify the `STUDENT_INDEX` of a student by using the [viewing a class](#viewing-a-class-view) command.
+- You can identify the `STUDENT_INDEX` of a student by using the [viewing a class](#viewing-a-class-view-c) command.
 
 </box>
 
@@ -641,7 +649,7 @@ edit /s 2 /c CS2103T /id A010193Z
 **Caution:**
 
 - Only valid ids will be recognised. It has to start with "A", followed by only numerical characters (0-9), and end with a single capitalized alphabet (A-Z).
-- After editing the student, the `UI` will update to show you the student list of the class that the edited student is in.
+- After editing the student, the GUI will update to show you the student list of the class that the edited student is in.
 - Be careful of any unintended edits that might lead to unwanted results (eg. 2 students with the same name) as they will not be counted as identical students as mentioned in the `Adding a student feature`.
 
 
@@ -788,6 +796,8 @@ Successfully marked all students in CS2103T!
 ```
 4. You have successfully marked all the students in "CS2103T" as present. :tada:
 
+<br>
+
 <box type="info">
 
 **Information:**
@@ -831,6 +841,8 @@ Successfully unmarked all students in CS2103T!
 4. Successfully unmarked all students in "CS2103T"! :tada:
 
 <box type="info">
+
+<br>
 
 **Information:**
 
@@ -882,7 +894,7 @@ Removes all your entries from EduTrack when you want to start fresh.
 
 **Information:**
 
-- EduTrack's UI should look like this when you have successfully executed the command:
+- EduTrack's GUI should look like this when you have successfully executed the command:
 
   ![clear command](images/clearCommand.png)
 
@@ -955,4 +967,5 @@ There is no need to save manually.
 | **Graphical User Interface (GUI)** | Graphical user interface where users interact with the system through visual representations. <br> <br> e.g. Google Chrome, Spotify, Windows Desktop |
 
 <br>
-:arrow_up: _Return to [Table of Contents](#table-of-contents)_ 
+
+:arrow_up: _Return to [Table of Contents](#table-of-contents)_
