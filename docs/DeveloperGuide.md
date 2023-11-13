@@ -1017,10 +1017,10 @@ Adds a student to a class.
    Expected: A new student called `John` is added to the first class (ie. `T1`). Displays the student list and class information of the class the student is added into (ie. `T1`).
 
 3. Some invalid test cases to try (Error details shown): <br>
-  * Missing student name: `add /s /c 1`
-  * Class index missing, or it is lesser or equal to 0: `add /s John /c`, `add /s John /c -1`
-  * Class index larger than the number of classes: `add /s John /c 100`
-  * Invalid student name used: `add /s R@chel /c 1`
+   * Missing student name: `add /s /c 1`
+   * Class index missing, or it is lesser or equal to 0: `add /s John /c`, `add /s John /c -1`
+   * Class index larger than the number of classes: `add /s John /c 100`
+   * Invalid student name used: `add /s R@chel /c 1`
 
 ### Removing a student
 
@@ -1104,9 +1104,9 @@ Marks all students absent for the current class.
    Expected: Marks all the students in the first class of EduTrack absent where display under `Present` changes to `N`. Displays the student list of the class that is marked absent.
 
 3. Some invalid test cases to try (Error details shown):<br>
-* Missing `/c` prefix: `unmarkall 1`
-* Missing class index: `unmarkall /c`
-* Class index larger than class list: `unmarkall /c 100`
+   * Missing `/c` prefix: `unmarkall 1`
+   * Missing class index: `unmarkall /c`
+   * Class index larger than class list: `unmarkall /c 100`
 
 ### Help
 
@@ -1118,7 +1118,6 @@ Note: If you minimize the window, using the help command will not do anything. D
 
 2. Test case: `help 1`<br>
    Expected: Shows the help window successfully. Additional invalid parameters are ignored.
-
 
 ### Clear
 
