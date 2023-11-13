@@ -232,8 +232,8 @@ This command will update the student's details and update the `model` accordingl
 
 The edit student command accepts:
 - Compulsory parameters
-  - Student index in the class
-  - Class Name
+  - Student's index in the class
+  - Class name of the student's class
 - At least one of these parameters
   - Name
   - Id
@@ -245,11 +245,11 @@ The following activity diagram summarizes what happens when a user executes an `
 
 Given below is an example usage scenario and how the edit student operation behaves at each step.
 
-Step 1. A valid command `edit /s 1 /c CS2103T /nJohn` is given as a user input. This invokes `LogicManager#execute()`, which calls `EduTrackParser#parseCommand()` to parse the above command into command word `edit /s` and command argument `/s 1 /c CS2103T /nJohn`.
+Step 1. A valid command `edit /s 1 /c CS2103T /n John` is given as a user input. This invokes `LogicManager#execute()`, which calls `EduTrackParser#parseCommand()` to parse the above command into command word `edit /s` and command argument `/s 1 /c CS2103T /n John`.
 
 Step 2. `EditStudentCommandParser` is initialized based on the parse results and `EditStudentCommandParser#parse()` is called. `EditStudentCommandParser#parse()` will call `ArgumentTokenizer#tokenize()` to identify all the prefixes such as `Index` of the Student being edited as well as the `ClassName` the student is supposed to be in. (ie. `1` and `CS2103T` respectively). It will also obtain an `ArgumentMultimap` of prefixes to their respective arguments (ie. `/n` is mapped to `John`).
 
-Step 3. `EditStudentCommandParser#parse()` then initializes and EditStudentDescriptor that stores the details to edit the student with. Thus, `EditStudentDescriptor#setName()` will be called to store `John Doe` as the `Name` to be edited.
+Step 3. `EditStudentCommandParser#parse()` then initializes and EditStudentDescriptor that stores the details to edit the student with. Thus, `EditStudentDescriptor#setName()` will be called to store `John` as the `Name` to be edited.
 
 Step 4. `EditStudentCommandParser#parse()` then initializes an EditStudentCommand with the `Index`, `ClassName`, and `EditStudentDescriptor` as an argument. `EditStudentCommand#execute()` is then called, which creates a new `Student` and copies over the details to be edited from the `EditStudentDescriptor` into both the `UniqueStudentList` of the `Class` and `EduTrack`.
 
@@ -472,10 +472,6 @@ The following activity diagram summarizes what happens when a new Class is added
   - Pros: All information are specified by the time the class is created.
   - Cons: Requires the user to provide additional details like class notes or class schedule
 
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 ---
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -533,8 +529,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User launches the app for the first time.
-2. EduTrack populates the app with sample data for a class.
-3. User accesses the sample data to see how the app works.
+2. EduTrack populates the app with sample data.
 
    Use case ends.
 
@@ -554,9 +549,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to add a class and specifies the class name
-2.  EduTrack adds the class to the list of classes
-3.  EduTrack shows the updated list of classes
+1.  User requests to add a class and specifies the class name.
+2.  EduTrack adds the class to the list of classes.
+3.  EduTrack shows the updated list of classes.
 
 **Extensions**
 
@@ -568,7 +563,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 1b. Class name already exists.
 
-  - 1a1. EduTrack informs user that class already exists.
+  - 1b1. EduTrack informs user that class already exists.
 
     Use case ends.
 
@@ -578,11 +573,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to view the list of classes
-2.  EduTrack shows a list of classes
-3.  User requests to delete a specific class in the list
-4.  EduTrack deletes the class
-5.  EduTrack informs the user that the class is successfully deleted
+1.  User requests to view the list of classes.
+2.  EduTrack shows a list of classes.
+3.  User requests to delete a specific class in the list.
+4.  EduTrack deletes the class.
+5.  EduTrack informs the user that the class is successfully deleted.
 
     Use case ends.
 
@@ -613,7 +608,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ---
 
-**Use case: Edit a Class**
+**Use case: Edit a class**
 
 **MSS**
 
@@ -653,11 +648,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to view the students in a particular class
-2.  EduTrack shows a list of students
-3.  User requests to mark a student present
-4.  EduTrack marks the student present, updates the student's lessons attended counter and current attendance
-5.  EduTrack informs the user the student was successfully marked present
+1.  User requests to view the students in a particular class.
+2.  EduTrack shows a list of students.
+3.  User requests to mark a student present.
+4.  EduTrack marks the student present, updates the student's lessons attended counter and current attendance.
+5.  EduTrack informs the user the student was successfully marked present.
 
     Use case ends.
 
@@ -665,7 +660,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 2a. The list is empty.
 
-  Use case ends
+  Use case ends.
 
 - 3a. The given student index is invalid.
 
@@ -687,7 +682,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 3d. No class name specified.
 
-  - 3d1. EduTrack shows an error message
+  - 3d1. EduTrack shows an error message.
 
     Use case ends.
 
@@ -697,11 +692,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to view the students in a particular class
-2.  EduTrack shows a list of students
-3.  User requests to mark a student present
-4.  EduTrack marks the student present, updates the student's lessons attended counter and current attendance
-5.  EduTrack informs the user the student was successfully marked present
+1.  User requests to view the students in a particular class.
+2.  EduTrack shows a list of students.
+3.  User requests to mark a student present.
+4.  EduTrack marks the student present, updates the student's lessons attended counter and current attendance.
+5.  EduTrack informs the user the student was successfully marked present.
 
     Use case ends.
 
@@ -709,7 +704,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 2a. The list is empty.
 
-  Use case ends
+  Use case ends.
 
 - 3a. The given class index is invalid.
 
@@ -762,35 +757,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User chooses to add a student to an existing class.
-2. User requests to add a new student to an existing class.
-3. EduTrack adds the student to the specified class.
+1. User requests to add a new student to an existing class.
+2. EduTrack adds the student into the specified class.
 
 **Extensions**
 
-- 1a. Student name is not specified.
+- 1a. Not all required parameters are present.
 
-  - 1a1. EduTrack informs user that the student name is empty.
-
-    Use case ends.
-
-- 1b. Class name is not specified.
-
-  - 1b1. EduTrack informs user that the class name is empty.
+  - 1a1. EduTrack shows an error message.
 
     Use case ends.
 
-- 2a. Student name already exists.
+- 1b. Student already exists.
 
-  - 2a1. EduTrack informs user that student name already exists.
-  - 2a2. EduTrack terminates the request.
+  - 1b1. EduTrack informs user that the student already exists.
 
     Use case ends.
 
-- 2b. Class does not exist.
+- 1c. Class index is invalid.
 
-  - 2b1. EduTrack informs user that the class is not found.
-  - 2b2. EduTrack terminates the request.
+  - 1c1. EduTrack informs user that the class index is invalid.
 
     Use case ends.
 
@@ -830,25 +816,46 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ---
 
-**Use case: Modify an existing student records**
+**Use case: Edit a student**
 
 **MSS**
 
-1. User requests to modify an existing student record in a class.
-2. EduTrack responds with a list of categories for user to choose to modify.
-3. User chooses a category to modify.
-4. EduTrack requests for new input in the category.
-5. User enters the new input for the category.
-6. EduTrack updates and displays the new student record.
+1. User requests to view the students from a particular class.
+2. User requests to edit the details of a specific student in the list based on index.
+3. EduTrack edits the records of the specified student from the specified class.
+4. EduTrack updates and displays the student list of the class.
 
    Use case ends.
 
 **Extensions**
 
-- 1a. EduTrack detects that student or class does not exist.
+- 2a. Not all compulsory parameters are present.
 
-  - 1a1. EduTrack informs the user that the student or the class does not exist.
-  - 1a2. EduTrack terminates the request.
+  - 2a1. EduTrack shows an error message.
+
+    Use case ends.
+
+- 2b. Compulsory parameters are valid but none of the optional parameters are present.
+
+  - 2b1. EduTrack shows an error message.
+
+    Use case ends.
+
+- 2c. Student index is invalid.
+
+  - 2c1. EduTrack informs user that the student index is invalid.
+
+    Use case ends.
+
+- 2d. Class does not exist.
+
+  - 2d1. EduTrack informs user that class does not exist.
+
+    Use case ends.
+
+- 2e. Another identical student is found.
+
+  - 2e1. EduTrack informs user the student already exists.
 
     Use case ends.
 
@@ -872,8 +879,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 4.  **Performance**
 
 - The system should respond to user requests within a reasonable time frame (i.e. under 2 seconds).
-
-_{More to be added}_
 
 ### Glossary
 
@@ -910,230 +915,230 @@ Given below are instructions to test the app manually.
 
 ### List all classes
 
-1. List all the classes that have been added into EduTrack.
+List all the classes that have been added into EduTrack.
 
-   1. Test case: `list`<br>
-      Expected: All the classes that have been added into EduTrack are shown. If the user is previously viewing a class, switches from class' student list to class list display.
+1. Test case: `list`<br>
+   Expected: All the classes that have been added into EduTrack are shown. If the user is previously viewing a class, switches from class' student list to class list display.
 
-   2. Test case: `list 1`<br>
-      Expected: Similar to the previous. Additional invalid parameters are ignored.
+2. Test case: `list 1`<br>
+   Expected: Similar to the previous. Additional invalid parameters are ignored.
 
-   3. Test case: `list /n John`<br>
-      Expected: Similar to the previous.
+3. Test case: `list /n John`<br>
+   Expected: Similar to the previous.
 
 ### Adding a class
 
-1. Adding a class to EduTrack.
+Adding a class to EduTrack.
 
-   1. Test case: `add /c CS2103T`<br>
-      Expected: New class is added.
+1. Test case: `add /c CS2103T`<br>
+   Expected: New class is added.
 
-   2. Test case: `add /c cs2101`<br>
-      Expected: New class is added.
+2. Test case: `add /c cs2101`<br>
+   Expected: New class is added.
 
-   3. Test case: `add /c cs2101`<br>
-      Expected: No class is added. Error details are shown.<br>
-      Note: This has to be performed after test case 2.
+3. Test case: `add /c cs2101`<br>
+   Expected: No class is added. Error details are shown.<br>
+   Note: This has to be performed after test case 2.
 
 ### Removing a class
 
-1. Removes a class from EduTrack.
+Removes a class from EduTrack.
 
-   1. Prerequisites: List all classes using the `list` command. Multiple classes in the list.
+1. Prerequisites: List all classes using the `list` command. Multiple classes in the list.
 
-   2. Test case: `remove /c 1`<br>
-      Expected: The first class is removed from the list. Class name is shown in the response message.
+2. Test case: `remove /c 1`<br>
+   Expected: The first class is removed from the list. Class name is shown in the response message.
 
-   3. Test case: `remove /c 0`<br>
-      Expected: No classes are deleted. Error details are shown.
+3. Test case: `remove /c 0`<br>
+   Expected: No classes are deleted. Error details are shown.
 
 ### Viewing a class
 
-1. Views the detailed information of a class.
+Views the detailed information of a class.
 
-   1. Prerequisites: List all classes using the `list` command. Multiple classes in the list.
+1. Prerequisites: List all classes using the `list` command. Multiple classes in the list.
 
-   2. Test case: `view /c 1`<br>
-      Expected: Displays the student list of the first class as well as the class details in the Class information box.
+2. Test case: `view /c 1`<br>
+   Expected: Displays the student list of the first class as well as the class details in the Class information box.
 
-   3. Test case: `view /c he`<br>
-      Expected: No change in display. Error details are shown.
+3. Test case: `view /c he`<br>
+   Expected: No change in display. Error details are shown.
 
 ### Editing a class
 
-1. Edits the details of a class in EduTrack.
+Edits the details of a class in EduTrack.
 
-   1. Prerequisites: List all classes using the `list` command. There is a class called `T1` at index 1.
+1. Prerequisites: List all classes using the `list` command. There is a class called `T1` at index 1.
 
-   2. Test case: `edit /c 1 /n T0`<br>
-      Expected: Name of the class is replaced with `T0`. Displays only the edited class and the edited details.
+2. Test case: `edit /c 1 /n T0`<br>
+   Expected: Name of the class is replaced with `T0`. Displays only the edited class and the edited details.
 
 ### Starting a lesson
 
-1. Starts the lesson of a class.
+Starts the lesson of a class.
 
-   1. Prerequisites: List all classes using the `list` command. The first class called `CS2103T` have multiple students.
+1. Prerequisites: List all classes using the `list` command. The first class called `CS2103T` have multiple students.
 
-   2. Test case: `startlesson /c CS2103T`<br>
-      Expected: Starts a new lesson for the class `CS2103T`. Displays the student list of the class and class information. All students' total attendance increases by 1 and are now all absent (ie. the `Present` column is all `N`).
+2. Test case: `startlesson /c CS2103T`<br>
+   Expected: Starts a new lesson for the class `CS2103T`. Displays the student list of the class and class information. All students' total attendance increases by 1 and are now all absent (ie. the `Present` column is all `N`).
 
-   3. Some invalid test cases to try (Error details shown):<br>
-      * Missing `/c` prefix: `startlesson`
-      * Missing class name: `startlesson /c`
-      * Non-existent class: `startlesson /c NOTACLASS`
+3. Some invalid test cases to try (Error details shown):<br>
+   * Missing `/c` prefix: `startlesson`
+   * Missing class name: `startlesson /c`
+   * Non-existent class: `startlesson /c NOTACLASS`
 
 ### Setting the number of lessons of a class
 
-1. Sets the total number of a class.
+Sets the total number of a class.
 
-   1. Prerequisites: List all classes using the `list` command. The first class called `CS2103T` has multiple students. The current total lessons of the class is `5`.
+1. Prerequisites: List all classes using the `list` command. The first class called `CS2103T` has multiple students. The current total lessons of the class is `5`.
 
-   2. Test case: `setlesson /c CS2103T /l 10`<br>
-      Expected: Sets the total lesson to 10 for the class `CS2103T`. Displays the student list and class details of class `CS2103T` and the overall attendance will be out of `10`.
+2. Test case: `setlesson /c CS2103T /l 10`<br>
+   Expected: Sets the total lesson to 10 for the class `CS2103T`. Displays the student list and class details of class `CS2103T` and the overall attendance will be out of `10`.
 
-   3. Test case: `setlesson /c CS2103T /l 0`<br>
-      Expected: Sets the total lesson to 0 for the class `CS2103T`. Displays the student list and class details of class `CS2103T` and the overall attendance will be out of `0`.<br>
-      Note: This command is meant for users to edit the total lessons if they have incorrectly `startlesson`. Thus, no checks are done to ensure `/l` is valid. Do not be alarmed by invalid attendance records if the command is used incorrectly.
+3. Test case: `setlesson /c CS2103T /l 0`<br>
+   Expected: Sets the total lesson to 0 for the class `CS2103T`. Displays the student list and class details of class `CS2103T` and the overall attendance will be out of `0`.<br>
+   Note: This command is meant for users to edit the total lessons if they have incorrectly `startlesson`. Thus, no checks are done to ensure `/l` is valid. Do not be alarmed by invalid attendance records if the command is used incorrectly.
 
 ### Adding a student
 
-1. Adds a student to a class.
+Adds a student to a class.
 
-    1. Prerequisite: List all classes using the `list` command. There is a class called `T1` at index 1 with no students.
+1. Prerequisite: List all classes using the `list` command. There is a class called `T1` at index 1 with no students.
 
-    2. Test case: `add /s John /c 1`<br>
-       Expected: A new student called `John` is added to the first class (ie. `T1`). Displays the student list and class information of the class the student is added into (ie. `T1`).
+2. Test case: `add /s John /c 1`<br>
+   Expected: A new student called `John` is added to the first class (ie. `T1`). Displays the student list and class information of the class the student is added into (ie. `T1`).
 
-    3. Some invalid test cases to try (Error details shown):<br>
-       * Missing student name: `add /s /c 1`
-       * Class index missing, or it is lesser or equal to 0: `add /s John /c`, `add /s John /c -1`
-       * Class index larger than the number of classes: `add /s John /c 100`
-       * Non-alphanumeric Characters used for student name: `Add /s R@chel /c 1`
+3. Some invalid test cases to try (Error details shown): <br>
+  * Missing student name: `add /s /c 1`
+  * Class index missing, or it is lesser or equal to 0: `add /s John /c`, `add /s John /c -1`
+  * Class index larger than the number of classes: `add /s John /c 100`
+  * Invalid student name used: `add /s R@chel /c 1`
 
 ### Removing a student
 
-1. Removes a student from a class.
+Removes a student from a class.
 
-   1. Prerequisite: View the first class called `CS2103T` with multiple students using the `view /c` command. Multiple students in the student list.
+1. Prerequisite: View the first class called `CS2103T` with multiple students using the `view /c` command. Multiple students in the student list.
 
-   2. Test case: `remove /s 2 /c CS2103T`<br>
-      Expected: The second student is deleted from the class `CS2103T`. Displays student list of the class the student is removed from.
+2. Test case: `remove /s 2 /c CS2103T`<br>
+   Expected: The second student is removed from the class `CS2103T`. Displays student list of the class the student is removed from.
 
-   3. Some invalid test cases to try (Error details shown):<br>
-      * Invalid student index: `remove /s 100 /c CS2103T`
+3. Some invalid test cases to try (Error details shown):<br>
+   * Invalid student index: `remove /s 100 /c CS2103T`
 
 ### Editing a student
 
-1. Edits a student record.
+Edits a student record.
 
-   1. Prerequisite: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student named `Bob` in index 1 of the student list.
+1. Prerequisite: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student named `Bob` in index 1 of the student list.
 
-   2. Test case: `edit /s 1 /c CS2103T /n John /id A0000000U /m Quiet`<br>
-      Expected: Student name is replaced with `John`, id is replaced with `A0000000U`, memo is replaced with `Quiet`. Details of the edited student is shown.
+2. Test case: `edit /s 1 /c CS2103T /n John /id A0000000U /m Quiet`<br>
+   Expected: Student's name is replaced with `John`, id is replaced with `A0000000U`, memo is replaced with `Quiet`. Details of the edited student is shown.
 
-   3. Test case: `edit /s 1 /c CS2103T /p Answered some questions.`<br>
-      Expected: Ui's class participation column is updated to `Answered some questions.` Details of edited student is shown.
+3. Test case: `edit /s 1 /c CS2103T /p Answered some questions.`<br>
+   Expected: Ui's class participation column is updated to `Answered some questions.` Details of edited student is shown.
 
-   4. Some invalid test cases to try (Error details shown):<br>
-      * No optional fields: `edit /s 1 /c CS2103T`
-      * Student index larger than the number of students in the class: `edit /s 100 /c CS2103T /m Bob`
+4. Some invalid test cases to try (Error details shown):<br>
+   * No optional fields: `edit /s 1 /c CS2103T`
+   * Student index larger than the number of students in the class: `edit /s 100 /c CS2103T /m Bob`
 
 ### Marking a student present
 
-1. Marks a student present for the current class.
+Marks a student present for the current class.
 
-   1. Prerequisites: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student at index 2 who has not been marked present.
+1. Prerequisites: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student at index 2 who has not been marked present.
 
-   2. Test case: `mark /s 2 /c CS2103T`<br>
-      Expected: Marks student at index 2 present. Display under `Present` changes from `N` to `Y` and overall attendance increase by 1.
+2. Test case: `mark /s 2 /c CS2103T`<br>
+   Expected: Marks student at index 2 present. Display under `Present` changes from `N` to `Y` and overall attendance increase by 1.
 
-   3. Some invalid test cases to try (Error details shown):<br>
-      * Student index = 0: `mark /s 0 /c CS2103T`
-      * Student index larger than student list: `mark /s 100 /c CS2103T`
-      * Class name that does not exist: `mark /s 100 /c NOTACLASS`
-      * Marking a student present again: `mark /s 2 /c CS2103T`
+3. Some invalid test cases to try (Error details shown):<br>
+   * Student index = 0: `mark /s 0 /c CS2103T`
+   * Student index larger than student list: `mark /s 100 /c CS2103T`
+   * Class name that does not exist: `mark /s 100 /c NOTACLASS`
+   * Marking a student present again: `mark /s 2 /c CS2103T`
 
 ### Marking a student absent
 
-1. Marks a student present for the current class.
+Marks a student present for the current class.
 
-   1. Prerequisites: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student at index 2 who has been marked present.
+1. Prerequisites: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student at index 2 who has been marked present.
 
-   2. Test case: `unmark /s 2 /c CS2103T`<br>
-      Expected: Marks student at index 2 absent. Display under `Present` changes from `Y` to `N` and overall attendance decrease by 1.
+2. Test case: `unmark /s 2 /c CS2103T`<br>
+   Expected: Marks student at index 2 absent. Display under `Present` changes from `Y` to `N` and overall attendance decrease by 1.
 
-   3. Some invalid test cases to try (Error details shown):<br>
-     * Student index = 0: `unmark /s 0 /c CS2103T`
-     * Student index larger than student list: `unmark /s 100 /c CS2103T`
-     * Class name that does not exist: `unmark /s 100 /c NOTACLASS`
-     * Marking a student absent again: `unmark /s 2 /c CS2103T`
+3. Some invalid test cases to try (Error details shown):<br>
+   * Student index = 0: `unmark /s 0 /c CS2103T`
+   * Student index larger than student list: `unmark /s 100 /c CS2103T`
+   * Class name that does not exist: `unmark /s 100 /c NOTACLASS`
+   * Marking a student absent again: `unmark /s 2 /c CS2103T`
 
 ### Marking all students in a class present
 
-1. Marks all students present for the current class.
+Marks all students present for the current class.
 
-   1. Prerequisites: List all classes using the `list` command. The first class has multiple students.
+1. Prerequisites: List all classes using the `list` command. The first class has multiple students.
 
-   2. Test case: `markall /c 1`<br>
-      Expected: Marks all the students in the first class of EduTrack present where display under `Present` changes to `Y`. Displays the student list of the class that is marked present.
+2. Test case: `markall /c 1`<br>
+   Expected: Marks all the students in the first class of EduTrack present where display under `Present` changes to `Y`. Displays the student list of the class that is marked present.
 
-   3. Some invalid test cases to try (Error details shown):<br>
-     * Missing `/c` prefix: `markall 1`
-     * Missing class index: `markall /c`
-     * Class index larger than class list: `markall /c 100`
+3. Some invalid test cases to try (Error details shown):<br>
+   * Missing `/c` prefix: `markall 1`
+   * Missing class index: `markall /c`
+   * Class index larger than class list: `markall /c 100`
 
 ### Marking all students in a class absent
 
-1. Marks all students absent for the current class.
+Marks all students absent for the current class.
 
-  1. Prerequisites: List all classes using the `list` command. The first class has multiple students.
+1. Prerequisites: List all classes using the `list` command. The first class has multiple students.
 
-  2. Test case: `unmarkall /c 1`<br>
-     Expected: Marks all the students in the first class of EduTrack absent where display under `Present` changes to `N`. Displays the student list of the class that is marked absent.
+2. Test case: `unmarkall /c 1`<br>
+   Expected: Marks all the students in the first class of EduTrack absent where display under `Present` changes to `N`. Displays the student list of the class that is marked absent.
 
-  3. Some invalid test cases to try (Error details shown):<br>
-  * Missing `/c` prefix: `unmarkall 1`
-  * Missing class index: `unmarkall /c`
-  * Class index larger than class list: `unmarkall /c 100`
+3. Some invalid test cases to try (Error details shown):<br>
+* Missing `/c` prefix: `unmarkall 1`
+* Missing class index: `unmarkall /c`
+* Class index larger than class list: `unmarkall /c 100`
 
 ### Help
 
-1. Showing the help window that contains a link to the User Guide.<br>
-   Note: If you minimize the window, using the help command will not do anything. Do look for the minimized window in the taskbar of your computer!
+Shows the help window that contains a link to the User Guide.<br>
+Note: If you minimize the window, using the help command will not do anything. Do look for the minimized window in the taskbar of your computer!
 
-   1. Test case: `help`<br>
-      Expected: Shows the help window successfully.
+1. Test case: `help`<br>
+   Expected: Shows the help window successfully.
 
-   2. Test case: `help 1`<br>
-        Expected: Shows the help window successfully. Additional invalid parameters are ignored.
+2. Test case: `help 1`<br>
+   Expected: Shows the help window successfully. Additional invalid parameters are ignored.
 
 
 ### Clear
 
-1. Clearing all stored data in EduTrack.
+Clears all stored data in EduTrack.
 
-   1. Prerequisites: EduTrack is populated with data (classes, students, both, or none).
+1. Prerequisites: EduTrack is populated with data (classes, students, both, or none).
 
-   2. Test case: `clear`<br>
-      Expected: Clears all stored data in EduTrack. Clear will be successful even if EduTrack has no data.
+2. Test case: `clear`<br>
+   Expected: Clears all stored data in EduTrack. Clear will be successful even if EduTrack has no data.
 
-   3. Test case: `clear 1`<br>
-      Expected: Clears all stored data in EduTrack. Additional invalid parameters are ignored.
+3. Test case: `clear 1`<br>
+   Expected: Clears all stored data in EduTrack. Additional invalid parameters are ignored.
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+Dealing with missing/corrupted data files
 
-   1. Make sure that there is a `./data/edutrack.json` file. <br>
-      If not, open the application (the jar file), make some changes (e.g. `add /c T1`) and close the app (by typing in the `exit` command or clicking on the close button).
+1. Make sure that there is a `./data/edutrack.json` file. <br>
+   If not, open the application (the jar file), make some changes (e.g. `add /c T1`) and close the app (by typing in the `exit` command or clicking on the close button).
 
-   2. Open `./data/edutrack.json` in a text editor or an integrated development environment (IDE).
+2. Open `./data/edutrack.json` in a text editor or an integrated development environment (IDE).
 
-   3. Remove the starting `{` character of the JSON file and save the file.
+3. Remove the starting `{` character of the JSON file and save the file.
 
-   4. Launch the app by running `java -jar edutrack.jar` in the console or double-click the application. <br>
-      Expected: The GUI should pop up with no entries. The console should give warnings about incorrect data format (due to the removal of the `{` character at the start of the `edutrack.json` file). Now, you can start over and add whatever entries you want.<br>
-      Note: If you want to start with populated data, delete the entire `edutrack.json` file and launch the application.
+4. Launch the app by running `java -jar edutrack.jar` in the console or double-click the application. <br>
+   Expected: The GUI should pop up with no entries. The console should give warnings about incorrect data format (due to the removal of the `{` character at the start of the `edutrack.json` file). Now, you can start over and add whatever entries you want.<br>
+   Note: If you want to start with populated data, delete the entire `edutrack.json` file and launch the application.
 
 ## **Appendix: Planned Enhancements**
 
