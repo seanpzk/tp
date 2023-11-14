@@ -17,7 +17,7 @@ Given below are my contributions to the project.
 
 * **New Feature**: Added the ability to mark a student present for a lesson in EduTrack
   * **What it does:** Allows the user to mark a student present if they attended their lesson, this enables the user to keep track of their student's attendance
-  * **Justification:** This feature is important because it serves as the main functionality of our application. Which is to enable users with a convenient way to track the present and overall attendance of their students
+  * **Justification:** This feature serves as the main functionality of our application. Which is to enable users with a convenient way to track the present and overall attendance of their students
   * **Highlights:** This feature was challenging as I had to weigh the pros and cons of two different implementation methods. The more challenging solution is to maintain a state of all lessons which would have been difficult to implement and moved the project towards a "morph" methodology. Thus I decided to stick with a simpler approach.
 
 * **New Feature**: Added the ability to mark a student absent for a class in EduTrack
@@ -30,8 +30,6 @@ Given below are my contributions to the project.
   * **Justification:** This feature adds a lot of convenience to the user especially when they have many students to mark present
   * **Highlights:** I was able to build on the mark student present for this command. This greatly reduced code required and complexity to implement this feature which made the code easier to maintain
 
-* **Non-feature**: Added test cases for the mark all students absent in a class command and its parser in EduTrack
-
 * **Code contributed**: [RepoSense Link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=donovanjj&breakdown=true)
 
 * **Project management**:
@@ -43,10 +41,10 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * **remove class:** Added and maintained the `remove class` feature in the user guide (PR [#27](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/27), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
-    * **mark student present:** Added and maintained the `mark` feature in the user guide (PR [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
-    * **mark student absent:** Added and maintained the `unmark` feature in the user guide (PR [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
-    * **mark all students present:** Added and maintained the `markall` feature in the user guide (PR [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
+    * **remove class:** Added the `remove class` feature in the user guide (PR [#27](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/27), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
+    * **mark student present:** Added the `mark` feature in the user guide (PR [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
+    * **mark student absent:** Added the `unmark` feature in the user guide (PR [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
+    * **mark all students present:** Added the `markall` feature in the user guide (PR [#72](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/72), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
   * README:
     * Updated the README to remain consistent with our project (PR [#27](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/2), [#88](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/88))
   * Developer Guide:
@@ -60,5 +58,4 @@ Given below are my contributions to the project.
 
 * **Community**:
   * PR reviewed (with non-trivial review comments): (PR [#39](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/39), [#138](https://github.com/AY2324S1-CS2103T-T15-3/tp/pull/138))
-  * Brought up bug in `remove class` command** (Issue [#81](https://github.com/AY2324S1-CS2103T-T15-3/tp/issues/81))
-  * Brought up bug in `view class` command parser
+  * Brought up bug in `remove class` command (Issue [#81](https://github.com/AY2324S1-CS2103T-T15-3/tp/issues/81))
