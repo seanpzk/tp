@@ -16,6 +16,7 @@
 * [JavaFX](https://openjfx.io/)
 * [Jackson](https://github.com/FasterXML/jackson)
 * [JUnit5](https://github.com/junit-team/junit5)
+* This project is adapted from [AddressBook Level 3 (AB3)](https://github.com/se-edu/addressbook-level3) by [SE-EDU](https://se-education.org).
 
 ---
 
