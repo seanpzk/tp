@@ -16,6 +16,7 @@
 * [JavaFX](https://openjfx.io/)
 * [Jackson](https://github.com/FasterXML/jackson)
 * [JUnit5](https://github.com/junit-team/junit5)
+* This project is adapted from [AddressBook Level 3 (AB3)](https://github.com/se-edu/addressbook-level3) by [SE-EDU](https://se-education.org).
 
 ---
 
@@ -927,10 +928,7 @@ List all the classes that have been added into EduTrack.
    Expected: All the classes that have been added into EduTrack are shown. If the user is previously viewing a class, switches from class' student list to class list display.
 
 2. Test case: `list 1`<br>
-   Expected: Similar to the previous. Additional invalid parameters are ignored.
-
-3. Test case: `list /n John`<br>
-   Expected: Similar to the previous.
+   Expected: Similar to the previous. Additional characters (except prefixes) after a whitespace are ignored.
 
 ### Adding a class
 
@@ -1053,7 +1051,7 @@ Edits a student record.
 
 Marks a student present for the current class.
 
-1. Prerequisites: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student at index 2 who has not been marked present.
+1. Prerequisites: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student at index 2 who has not been marked present after a lesson have been started.
 
 2. Test case: `mark /s 2 /c CS2103T`<br>
    Expected: Marks student at index 2 present. Display under `Present` changes from `N` to `Y` and overall attendance increase by 1.
@@ -1061,14 +1059,14 @@ Marks a student present for the current class.
 3. Some invalid test cases to try (Error details shown):<br>
    * Student index = 0: `mark /s 0 /c CS2103T`
    * Student index larger than student list: `mark /s 100 /c CS2103T`
-   * Class name that does not exist: `mark /s 100 /c NOTACLASS`
+   * Class name that does not exist: `mark /s 2 /c NOTACLASS`
    * Marking a student present again: `mark /s 2 /c CS2103T`
 
 ### Marking a student absent
 
 Marks a student present for the current class.
 
-1. Prerequisites: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student at index 2 who has been marked present.
+1. Prerequisites: View the first class called `CS2103T` with multiple students using the `view /c` command. There is a student at index 2 who has been marked present after a lesson have been started.
 
 2. Test case: `unmark /s 2 /c CS2103T`<br>
    Expected: Marks student at index 2 absent. Display under `Present` changes from `Y` to `N` and overall attendance decrease by 1.
@@ -1076,7 +1074,7 @@ Marks a student present for the current class.
 3. Some invalid test cases to try (Error details shown):<br>
    * Student index = 0: `unmark /s 0 /c CS2103T`
    * Student index larger than student list: `unmark /s 100 /c CS2103T`
-   * Class name that does not exist: `unmark /s 100 /c NOTACLASS`
+   * Class name that does not exist: `unmark /s 2 /c NOTACLASS`
    * Marking a student absent again: `unmark /s 2 /c CS2103T`
 
 ### Marking all students in a class present
@@ -1116,7 +1114,7 @@ Note: If you minimize the window, using the help command will not do anything. D
    Expected: Shows the help window successfully.
 
 2. Test case: `help 1`<br>
-   Expected: Shows the help window successfully. Additional invalid parameters are ignored.
+   Expected: Shows the help window successfully. Additional characters (except prefixes) after a whitespace are ignored.
 
 ### Clear
 
@@ -1128,7 +1126,7 @@ Clears all stored data in EduTrack.
    Expected: Clears all stored data in EduTrack. Clear will be successful even if EduTrack has no data.
 
 3. Test case: `clear 1`<br>
-   Expected: Clears all stored data in EduTrack. Additional invalid parameters are ignored.
+   Expected: Clears all stored data in EduTrack. Additional characters (except prefixes) after a whitespace are ignored.
 
 ### Saving data
 
