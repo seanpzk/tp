@@ -458,7 +458,7 @@ startlesson /c CS2103T
 **Tip:**
 
 - You might find it helpful to use this command at the beginning of your class.
-- If you started a lesson by accident, you can manually [set the number of lessons](#setting-the-number-of-lessons-of-a-class--setlesson-c) back.
+- If you started a lesson by accident, you can manually [set the number of lessons](#setting-the-number-of-lessons-of-a-class-setlesson-c) back.
 
 </box>
 
