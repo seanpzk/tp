@@ -883,6 +883,8 @@ Exits the application at any time you want.
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Clearing all entries : `clear`
 
 Removes all your entries from EduTrack when you want to start fresh.
