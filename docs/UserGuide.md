@@ -561,7 +561,6 @@ Added New Student: John; Id: A0000000Z; Memo:  to the class: CS2103T
 <box type="tip">
 
 **Tip:**
-* If you want to see the student show up in the student list of the class, perform a [view command](#viewing-a-class-view-c) first. Be sure to remember the `CLASS_INDEX` though!
 * You can edit the student's id using the [edit student command](#editing-a-student-edit-s) once you have added the student!
 * You can also add the memo or class participation for a particular student using the same [edit student command](#editing-a-student-edit-s)!
 
